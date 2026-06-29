@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Blog — CALee Acupuncture | Grandpa's Tale</title>
+<meta name="description" content="Clinical blog by Hoon Lee, L.Ac. — Korean acupuncture, classical medicine, constitutional diagnosis, and geriatric care. Grandpa's Tale."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/style.css"/>
+<style>
+.blog-card{display:flex;flex-direction:column;border-top:3px solid var(--jade);border-radius:var(--radius);transition:border-color .12s,box-shadow .12s,transform .1s;}
+.blog-card:hover{box-shadow:0 4px 20px rgba(45,92,70,.12);transform:translateY(-2px);}
+.blog-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;}
+.blog-card-body{padding:16px 18px 14px;display:flex;flex-direction:column;flex:1;}
+.blog-tag{font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--jade);margin-bottom:8px;}
+.blog-card-body h3{font-family:var(--serif);font-size:1.12rem;font-weight:600;line-height:1.3;color:var(--ink);margin-bottom:6px;flex:1;}
+.blog-card-body h3 a{color:inherit;}
+.blog-card-body h3 a:hover{color:var(--jade);text-decoration:none;}
+.blog-excerpt{font-size:.85rem;color:var(--ink-soft);line-height:1.55;margin-bottom:10px;}
+.blog-arrow{font-family:var(--mono);font-size:.72rem;color:var(--jade);padding-top:10px;border-top:1px solid var(--rule);}
+.hub-card{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.hub-card p{font-size:.9rem;color:var(--ink-mid);}
+.featured-posts{margin-bottom:32px;}
+.article-card{display:flex;flex-direction:column;border-top:3px solid var(--jade);border-radius:var(--radius);}
+.article-card:hover{box-shadow:0 4px 20px rgba(45,92,70,.1);}
+.article-tag{font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--jade);margin-bottom:8px;}
+.article-card h3{font-family:var(--serif);font-size:1.08rem;font-weight:600;line-height:1.3;color:var(--ink);margin-bottom:6px;flex:1;}
+.article-card h3 a{color:inherit;}
+.article-arrow{font-family:var(--mono);font-size:.72rem;color:var(--jade);margin-top:auto;padding-top:10px;border-top:1px solid var(--rule);}
+#latestPosts{min-height:200px;}
+</style>
+</head>
+<body>
+<script src="/assets/site.js"></script>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">CALee Acupuncture · Grandpa's Tale</p>
+    <h1>Clinical Blog</h1>
+    <p>Articles on Korean acupuncture, classical medicine, constitutional diagnosis, and geriatric care — by Hoon Lee, L.Ac., DAOM(c).</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Latest from Blogger API -->
+    <div style="display:flex;align-items:baseline;gap:12px;justify-content:space-between;margin-bottom:18px;">
+      <h2 class="section-title" style="margin-bottom:0;">Latest Posts</h2>
+      <a href="https://blog.caleeacu.com" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:.78rem;color:var(--jade);">All posts →</a>
+    </div>
+    <div class="grid-2" id="latestPosts">
+      <div class="state-msg">Loading latest posts…</div>
+    </div>
+
+    <!-- Hub -->
+    <div class="card hub-card" style="margin-top:22px;">
+      <p>More articles, stories, and clinical reflections on the full blog.</p>
+      <a class="btn btn-jade" href="https://blog.caleeacu.com" target="_blank" rel="noopener">Visit Full Blog →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Featured Articles</h2>
+    <div class="grid-3">
+      <div class="card article-card"><div class="article-tag">Bodywork · Clinical</div><h3><a href="https://blog.caleeacu.com/p/korean-therapeutic-bodywork.html" target="_blank" rel="noopener">Korean Therapeutic Bodywork</a></h3><div class="article-arrow">Read article →</div></div>
+      <div class="card article-card"><div class="article-tag">Aging · Classical Medicine</div><h3><a href="https://blog.caleeacu.com/p/geriatric-syndromes-in-classical.html" target="_blank" rel="noopener">Geriatric Syndromes in Classical Medicine</a></h3><div class="article-arrow">Read article →</div></div>
+      <div class="card article-card"><div class="article-tag">FAQ · Patient Education</div><h3><a href="https://blog.caleeacu.com/p/people-also-ask.html" target="_blank" rel="noopener">People Also Ask</a></h3><div class="article-arrow">Read article →</div></div>
+      <div class="card article-card"><div class="article-tag">Korean Acupuncture · Framework</div><h3><a href="https://blog.caleeacu.com/p/modern-korean-acupuncture-k-acupuncture.html" target="_blank" rel="noopener">Korean Acupuncture (K-Acupuncture)</a></h3><div class="article-arrow">Read article →</div></div>
+      <div class="card article-card"><div class="article-tag">Oriental Medicine · Theory</div><h3><a href="https://blog.caleeacu.com/p/oriental-medicine-principles-insights.html" target="_blank" rel="noopener">Oriental Medicine: Principles &amp; Insights</a></h3><div class="article-arrow">Read article →</div></div>
+      <div class="card article-card"><div class="article-tag">Herbal Medicine · Classical</div><h3><a href="https://blog.caleeacu.com/p/korean-herbal-formulation.html" target="_blank" rel="noopener">Korean Herbal Formulation</a></h3><div class="article-arrow">Read article →</div></div>
+      <div class="card article-card"><div class="article-tag">Philosophy · Non-Fixed Self</div><h3><a href="https://blog.caleeacu.com/p/quantum-physics-and-non-self.html" target="_blank" rel="noopener">Physics and Non-Self</a></h3><div class="article-arrow">Read article →</div></div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Load latest 4 posts from Blogger JSON API
+fetch('https://blog.caleeacu.com/feeds/posts/default?alt=json&max-results=4')
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    var entries = (data.feed && data.feed.entry) || [];
+    var container = document.getElementById('latestPosts');
+    if(!entries.length){ container.innerHTML='<p style="color:var(--ink-soft);font-size:.9rem;">No posts found.</p>'; return; }
+    container.innerHTML = entries.map(function(e){
+      var title = e.title && e.title.$t || 'Untitled';
+      var link = '#';
+      if(e.link){ var l=e.link.find(function(x){return x.rel==='alternate';}); if(l) link=l.href; }
+      var date = e.published && e.published.$t ? new Date(e.published.$t).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}) : '';
+      var summary = e.summary && e.summary.$t ? e.summary.$t.replace(/<[^>]+>/g,'').substring(0,120)+'…' : '';
+      var thumb = '';
+      if(e.media$thumbnail) thumb = '<img class="blog-thumb" src="'+e.media$thumbnail.url.replace(/s72-c/,'s600-c')+'" alt="'+title+'" loading="lazy"/>';
+      return '<div class="card blog-card">'
+        +thumb
+        +'<div class="blog-card-body">'
+        +'<div class="blog-tag">'+date+'</div>'
+        +'<h3><a href="'+link+'" target="_blank" rel="noopener">'+title+'</a></h3>'
+        +(summary?'<p class="blog-excerpt">'+summary+'</p>':'')
+        +'<div class="blog-arrow">Read article →</div>'
+        +'</div></div>';
+    }).join('');
+  })
+  .catch(function(){
+    document.getElementById('latestPosts').innerHTML='<p style="color:var(--ink-soft);font-size:.9rem;">Visit <a href="https://blog.caleeacu.com" target="_blank" rel="noopener">blog.caleeacu.com</a> for the latest articles.</p>';
+  });
+</script>
+</body>
+</html>

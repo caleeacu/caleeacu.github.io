@@ -79,7 +79,7 @@
 // Load latest 4 posts from Blogger using JSONP (Blogger's JSON feed blocks
 // direct fetch() due to missing CORS headers, so we use the json-in-script
 // callback format instead, which works via a normal <script> tag).
-function renderBlogPosts(data){
+function paintBlogPosts(data){
   var entries = (data.feed && data.feed.entry) || [];
   var container = document.getElementById('latestPosts');
   if(!entries.length){ container.innerHTML='<p style="color:var(--ink-soft);font-size:.9rem;">No posts found.</p>'; return; }
@@ -110,10 +110,13 @@ var blogTimeout = setTimeout(function(){
   }
 }, 6000);
 
-window.renderBlogPosts = function(data){
+// This is the global callback name Blogger's JSONP script will invoke.
+// It must NOT share a name with paintBlogPosts above, or the assignment
+// below would overwrite the original function and cause infinite recursion.
+function renderBlogPosts(data){
   clearTimeout(blogTimeout);
-  renderBlogPosts(data);
-};
+  paintBlogPosts(data);
+}
 </script>
 <script src="https://blog.caleeacu.com/feeds/posts/default?alt=json-in-script&max-results=4&callback=renderBlogPosts"></script>
 </body>

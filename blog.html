@@ -76,34 +76,45 @@
 </section>
 
 <script>
-// Load latest 4 posts from Blogger JSON API
-fetch('https://blog.caleeacu.com/feeds/posts/default?alt=json&max-results=4')
-  .then(function(r){ return r.json(); })
-  .then(function(data){
-    var entries = (data.feed && data.feed.entry) || [];
-    var container = document.getElementById('latestPosts');
-    if(!entries.length){ container.innerHTML='<p style="color:var(--ink-soft);font-size:.9rem;">No posts found.</p>'; return; }
-    container.innerHTML = entries.map(function(e){
-      var title = e.title && e.title.$t || 'Untitled';
-      var link = '#';
-      if(e.link){ var l=e.link.find(function(x){return x.rel==='alternate';}); if(l) link=l.href; }
-      var date = e.published && e.published.$t ? new Date(e.published.$t).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}) : '';
-      var summary = e.summary && e.summary.$t ? e.summary.$t.replace(/<[^>]+>/g,'').substring(0,120)+'…' : '';
-      var thumb = '';
-      if(e.media$thumbnail) thumb = '<img class="blog-thumb" src="'+e.media$thumbnail.url.replace(/s72-c/,'s600-c')+'" alt="'+title+'" loading="lazy"/>';
-      return '<div class="card blog-card">'
-        +thumb
-        +'<div class="blog-card-body">'
-        +'<div class="blog-tag">'+date+'</div>'
-        +'<h3><a href="'+link+'" target="_blank" rel="noopener">'+title+'</a></h3>'
-        +(summary?'<p class="blog-excerpt">'+summary+'</p>':'')
-        +'<div class="blog-arrow">Read article →</div>'
-        +'</div></div>';
-    }).join('');
-  })
-  .catch(function(){
-    document.getElementById('latestPosts').innerHTML='<p style="color:var(--ink-soft);font-size:.9rem;">Visit <a href="https://blog.caleeacu.com" target="_blank" rel="noopener">blog.caleeacu.com</a> for the latest articles.</p>';
-  });
+// Load latest 4 posts from Blogger using JSONP (Blogger's JSON feed blocks
+// direct fetch() due to missing CORS headers, so we use the json-in-script
+// callback format instead, which works via a normal <script> tag).
+function renderBlogPosts(data){
+  var entries = (data.feed && data.feed.entry) || [];
+  var container = document.getElementById('latestPosts');
+  if(!entries.length){ container.innerHTML='<p style="color:var(--ink-soft);font-size:.9rem;">No posts found.</p>'; return; }
+  container.innerHTML = entries.map(function(e){
+    var title = e.title && e.title.$t || 'Untitled';
+    var link = '#';
+    if(e.link){ var l=e.link.find(function(x){return x.rel==='alternate';}); if(l) link=l.href; }
+    var date = e.published && e.published.$t ? new Date(e.published.$t).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}) : '';
+    var summary = e.summary && e.summary.$t ? e.summary.$t.replace(/<[^>]+>/g,'').substring(0,120)+'…' : '';
+    var thumb = '';
+    if(e.media$thumbnail) thumb = '<img class="blog-thumb" src="'+e.media$thumbnail.url.replace(/s72-c/,'s600-c')+'" alt="'+title.replace(/"/g,'&quot;')+'" loading="lazy"/>';
+    return '<div class="card blog-card">'
+      +thumb
+      +'<div class="blog-card-body">'
+      +'<div class="blog-tag">'+date+'</div>'
+      +'<h3><a href="'+link+'" target="_blank" rel="noopener">'+title+'</a></h3>'
+      +(summary?'<p class="blog-excerpt">'+summary+'</p>':'')
+      +'<div class="blog-arrow">Read article →</div>'
+      +'</div></div>';
+  }).join('');
+}
+
+// Fallback if JSONP doesn't load within 6 seconds (e.g. blocked or feed unavailable)
+var blogTimeout = setTimeout(function(){
+  var c = document.getElementById('latestPosts');
+  if(c && c.innerHTML.indexOf('Loading') !== -1){
+    c.innerHTML = '<p style="color:var(--ink-soft);font-size:.9rem;">Visit <a href="https://blog.caleeacu.com" target="_blank" rel="noopener">blog.caleeacu.com</a> for the latest articles.</p>';
+  }
+}, 6000);
+
+window.renderBlogPosts = function(data){
+  clearTimeout(blogTimeout);
+  renderBlogPosts(data);
+};
 </script>
+<script src="https://blog.caleeacu.com/feeds/posts/default?alt=json-in-script&max-results=4&callback=renderBlogPosts"></script>
 </body>
 </html>

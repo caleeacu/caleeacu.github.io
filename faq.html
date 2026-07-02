@@ -1,207 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Frequently asked questions about Korean acupuncture, constitutional medicine, Sasang, Eight Constitution, Saam acupuncture, and integrative research — CALee Research.">
-  <title>FAQ — Korean Acupuncture & Constitutional Medicine | CALee Research</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink: #1a1a1a; --ink-soft: #444; --ink-muted: #888;
-      --paper: #fafaf8; --paper-warm: #f4f2ee; --rule: #d8d4cc;
-      --accent: #2d5a8e; --accent-soft: #e8eef5;
-      --serif: 'EB Garamond', Georgia, serif;
-      --sans: 'Inter', system-ui, sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--sans); background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.6; }
-    nav { border-bottom: 1px solid var(--rule); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; background: var(--paper); position: sticky; top: 0; z-index: 100; }
-    .nav-brand { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); text-decoration: none; }
-    .nav-brand span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 0.85rem; color: var(--ink-soft); text-decoration: none; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-clinic { font-size: 0.8rem; color: var(--accent); text-decoration: none; border: 1px solid var(--accent); padding: 0.3rem 0.8rem; border-radius: 3px; }
-    .nav-clinic:hover { background: var(--accent); color: white; }
-    .page { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
-    .page-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
-    .page-title { font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400; line-height: 1.2; margin-bottom: 0.8rem; }
-    .page-sub { font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 3rem; line-height: 1.7; }
-    .faq-category { margin-bottom: 2.5rem; }
-    .faq-cat-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; color: var(--ink); padding-bottom: 0.6rem; border-bottom: 1px solid var(--rule); margin-bottom: 1.2rem; }
-    details { border-bottom: 1px solid var(--rule); }
-    details:last-child { border-bottom: none; }
-    summary { padding: 1rem 0; font-size: 0.92rem; font-weight: 500; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: '+'; font-size: 1.1rem; color: var(--accent); font-weight: 300; transition: transform 0.2s; }
-    details[open] summary::after { content: '−'; }
-    .faq-answer { padding: 0 0 1rem; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.75; }
-    .faq-answer p { margin-bottom: 0.6rem; }
-    .faq-answer p:last-child { margin-bottom: 0; }
-    .faq-answer a { color: var(--accent); }
-    footer { border-top: 1px solid var(--rule); padding: 2rem; text-align: center; font-size: 0.8rem; color: var(--ink-muted); background: var(--paper-warm); }
-    footer a { color: var(--accent); text-decoration: none; }
-    @media (max-width: 640px) { .nav-links { display: none; } .page { padding: 2.5rem 1.2rem; } }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>FAQ — CALee Research | Korean Acupuncture & Framework Questions</title>
+<meta name="description" content="Frequently asked questions about Korean acupuncture at CALee Acupuncture in Buena Park, CA — chronic pain, sciatica, neuropathy, first visits, insurance, and more."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/style.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<style>
+:root{--ink:#1A1208;--ink-mid:#4A3F30;--ink-soft:#8A7A68;--cream:#FAF7F2;--surface:#FFF;--rule:#E8E0D4;--jade:#2D5C46;--jade-light:#EBF2EE;--jade-mid:#4A8C6A;--radius:10px;--serif:'Cormorant Garamond',Georgia,serif;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px;}
+a{color:var(--jade);}
+a:hover{text-decoration:underline;}
+.page-header{padding:40px 0 26px;border-bottom:2px solid var(--ink);}
+.eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--jade);margin-bottom:10px;}
+.page-header h1{font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;margin-bottom:6px;}
+.page-header p{font-size:.94rem;color:var(--ink-mid);max-width:540px;line-height:1.65;margin-bottom:16px;}
+.search-wrap{position:relative;max-width:440px;}
+.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink-soft);pointer-events:none;}
+#faqSearch{width:100%;font-family:var(--sans);font-size:.93rem;padding:10px 14px 10px 38px;border:2px solid var(--ink);border-radius:8px;background:var(--surface);color:var(--ink);}
+#faqSearch:focus{outline:none;border-color:var(--jade);}
+#searchCount{font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);margin-top:4px;min-height:16px;}
+.layout{display:flex;gap:0;align-items:flex-start;}
+.sidebar{flex:0 0 196px;padding:22px 14px 40px 0;position:sticky;top:0;max-height:100vh;overflow-y:auto;}
+.sidebar-title{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;}
+.sidebar-nav{display:flex;flex-direction:column;gap:1px;}
+.sidebar-nav a{font-size:.83rem;color:var(--ink-mid);padding:7px 10px;border-radius:6px;display:block;border-left:3px solid transparent;transition:background .1s,color .1s,border-color .1s;text-decoration:none;}
+.sidebar-nav a:hover,.sidebar-nav a.active{background:var(--jade-light);color:var(--jade);border-left-color:var(--jade);font-weight:600;}
+.main{flex:1;padding:22px 0 60px 26px;min-width:0;border-left:1px solid var(--rule);}
+.state-msg{margin:24px 0;padding:16px 20px;border:1.5px dashed var(--rule);border-radius:var(--radius);font-family:var(--mono);font-size:.84rem;color:var(--ink-soft);}
+.state-msg--error{border-color:rgba(148,64,48,.4);color:rgb(148,64,48);background:rgba(148,64,48,.04);}
+.hidden{display:none!important;}
+.cat-block{margin-bottom:42px;}
+.cat-header{margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--ink);display:flex;align-items:baseline;gap:10px;}
+.cat-header h2{font-family:var(--serif);font-size:1.48rem;font-weight:700;}
+.cat-count{font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);}
+.faq-item{border:1.5px solid var(--rule);border-radius:var(--radius);margin-bottom:6px;background:var(--surface);transition:border-color .15s;}
+.faq-item:hover{border-color:rgba(45,92,70,.3);}
+.faq-item.hidden{display:none;}
+.faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:12px 15px;display:flex;justify-content:space-between;align-items:flex-start;font-family:var(--sans);font-size:.93rem;font-weight:600;color:var(--ink);gap:10px;line-height:1.45;}
+.faq-q:hover,.faq-q[aria-expanded="true"]{color:var(--jade);}
+.faq-icon{flex-shrink:0;font-size:.9rem;color:var(--jade);transition:transform .18s;margin-top:2px;}
+.faq-q[aria-expanded="true"] .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+.faq-a.open{max-height:1000px;}
+.faq-a-inner{padding:0 15px 14px;font-size:.9rem;color:var(--ink-mid);line-height:1.75;}
+@media(max-width:660px){.layout{flex-direction:column;}.sidebar{position:static;flex:none;width:100%;max-height:none;padding:14px 0;overflow-x:auto;border-bottom:1px solid var(--rule);}.sidebar-nav{flex-direction:row;flex-wrap:wrap;gap:5px;}.sidebar-nav a{padding:5px 10px;border-left:none;border-bottom:2px solid transparent;border-radius:4px;font-size:.8rem;}.main{padding:18px 0 40px;border-left:none;}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
 </head>
 <body>
-
-<nav>
-  <a href="/" class="nav-brand">CALee <span>Research</span></a>
-  <ul class="nav-links">
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/learning-center.html">Learning Center</a></li>
-    <li><a href="/faq.html">FAQ</a></li>
-    <li><a href="https://blog.caleeacu.com" target="_blank">Blog</a></li>
-  </ul>
-  <a href="https://caleeacu.com" class="nav-clinic">← Clinic</a>
-</nav>
-
-<div class="page">
-  <p class="page-eyebrow">FAQ</p>
-  <h1 class="page-title">Frequently Asked Questions</h1>
-  <p class="page-sub">Questions about Korean medicine, constitutional diagnosis, Saam acupuncture, research methodology, and clinical practice. For appointment and insurance questions, visit <a href="https://caleeacu.com">caleeacu.com</a>.</p>
-
-  <!-- CATEGORY 1 -->
-  <div class="faq-category">
-    <p class="faq-cat-title">Korean Medicine — The Basics</p>
-
-    <details>
-      <summary>What is Korean medicine, and how is it different from TCM?</summary>
-      <div class="faq-answer">
-        <p>Korean medicine (KM) shares classical roots with Traditional Chinese Medicine — both draw from foundational texts like the Huangdi Neijing and Nanjing. But they developed along distinct paths.</p>
-        <p>Modern TCM was systematized in China during the 1950s, progressively aligning its diagnostic vocabulary with biomedical categories. Korean medicine preserved a more dialectical approach — continuing to emphasize dynamic, constitutional, and pattern-based reasoning that resists standardization into disease-entity models.</p>
-        <p>The most significant difference in clinical practice: Korean medicine begins with constitutional assessment (Sasang or Eight Constitution typology), which shapes every treatment decision. Two patients with the same biomedical diagnosis receive different treatments because their constitutional patterns differ.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>What is Sasang constitutional medicine?</summary>
-      <div class="faq-answer">
-        <p>Sasang constitutional medicine (사상의학) was developed by Yi Je-ma in the 19th century. It classifies all individuals into one of four constitutional types — Taeyang, Taeeum, Soyang, Soeum — based on the relative strength and weakness of four organ systems (Lung, Spleen, Liver, Kidney).</p>
-        <p>Each constitutional type has characteristic physical traits, psychological tendencies, vulnerability patterns, and optimal treatment approaches. The same herbal formula or acupuncture approach that benefits one constitution may be ineffective or harmful for another.</p>
-        <p>Sasang is unique to Korean medicine and has no direct counterpart in TCM or Japanese Kampo traditions.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>What is Eight Constitution Medicine?</summary>
-      <div class="faq-answer">
-        <p>Eight Constitution Medicine (팔체질의학) was developed by Dowon Kuon in the 1960s. It extends the Sasang framework by differentiating eight constitutional types based on the hierarchical strength ordering of the five major organ systems.</p>
-        <p>Each constitution has a fixed organ strength hierarchy that remains constant throughout life. Treatment — acupuncture point selection, herbal formulas, dietary guidance — is calibrated to reinforce the weaker systems and moderate the stronger ones, restoring the constitutional balance specific to that individual.</p>
-        <p>Pulse diagnosis is the primary tool for determining constitutional type in Eight Constitution Medicine, which requires specialized clinical training.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>What is Saam acupuncture?</summary>
-      <div class="faq-answer">
-        <p>Saam acupuncture (사암침법) is a classical Korean acupuncture method developed in the 17th century, attributed to the monk Saam. It uses a four-needle technique — typically two reinforcing and two reducing points — selected according to the five-element correspondences of the Nanjing tradition.</p>
-        <p>Unlike most modern acupuncture systems, Saam uses only points on the extremities (below the elbows and knees), and employs precise point-combination logic derived from the classical generating and controlling cycles of five-element theory.</p>
-        <p>Saam acupuncture is rarely practiced outside Korea and is one of the most distinctively Korean contributions to the acupuncture tradition.</p>
-      </div>
-    </details>
-
+<div class="wrap">
+<div class="page-header">
+  <p class="eyebrow">CALee Acupuncture · Buena Park, CA</p>
+  <h1>Frequently Asked Questions</h1>
+  <p>Real questions from patients — including what to do when other treatments haven't worked.</p>
+  <div class="search-wrap">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" id="faqSearch" placeholder="Search questions…" aria-label="Search FAQ"/>
+    <div id="searchCount"></div>
   </div>
-
-  <!-- CATEGORY 2 -->
-  <div class="faq-category">
-    <p class="faq-cat-title">The Clinical Framework</p>
-
-    <details>
-      <summary>What does "relational process" mean in Korean acupuncture diagnosis?</summary>
-      <div class="faq-answer">
-        <p>In Korean acupuncture, illness is not treated as a fixed entity (a named disease with consistent characteristics) but as a conditional expression of imbalance in the body's dynamic physiological relationships.</p>
-        <p>This means the same symptom — say, chronic low back pain — is not always the same condition. It may reflect Kidney Yang deficiency in one patient, Liver Qi constraint in another, or Cold-Damp obstruction in a third. Each requires a different treatment principle.</p>
-        <p>The diagnostic process constructs a picture of the unique relational configuration present in this patient at this moment — not an assignment to a predefined disease category. This is what the term "relational process" describes.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>What is constitutional individuation, and why does it matter clinically?</summary>
-      <div class="faq-answer">
-        <p>Constitutional individuation means that treatment decisions are built around the patient's fixed constitutional type — not just the presenting symptoms or biomedical diagnosis.</p>
-        <p>It matters clinically because two patients with identical diagnoses may respond very differently to the same treatment. A protocol that reliably relieves sciatica in a Renotonia patient may be ineffective or even counterproductive in a Colonotonia patient.</p>
-        <p>This is why Korean acupuncture resists standardized treatment protocols. The constitutional layer is not an optional add-on — it is the foundational diagnostic layer that makes individualized treatment possible.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>How does Korean medicine's diagnostic logic differ from standard acupuncture protocols?</summary>
-      <div class="faq-answer">
-        <p>Standard acupuncture protocols assign point combinations to diagnostic categories: for sciatica, use GB30, BL40, BL57. The same points for every patient with that diagnosis.</p>
-        <p>Korean acupuncture begins one step earlier: constitutional assessment. Before selecting any points, the practitioner identifies the patient's constitutional type — which determines the organ hierarchy and the direction of imbalance. Point selection follows constitutional logic, not symptomatic correspondence.</p>
-        <p>The result is that two patients with identical diagnoses receive different treatments. Not because the practitioner is being inconsistent, but because consistency in Korean medicine means being consistent with the patient's constitutional pattern — not with a disease category.</p>
-      </div>
-    </details>
-
-  </div>
-
-  <!-- CATEGORY 3 -->
-  <div class="faq-category">
-    <p class="faq-cat-title">Research & Evidence</p>
-
-    <details>
-      <summary>Why is Korean acupuncture difficult to study with standard RCT methods?</summary>
-      <div class="faq-answer">
-        <p>Standard randomized controlled trials test whether treatment A produces better outcomes than treatment B (or placebo) for condition C. This design assumes that treatment A is a single, uniform intervention applied consistently to all patients with condition C.</p>
-        <p>Korean acupuncture violates this assumption at the design level. The treatment is intentionally individualized — different patients receive different point combinations based on their constitutional type. A standard RCT that uses a single protocol for all patients is not testing Korean acupuncture; it is testing a standardized approximation of it.</p>
-        <p>This is the argument developed in <a href="https://ssrn.com/abstract=6405558" target="_blank">A Conceptual Framework for Diagnostic Reasoning in Korean Acupuncture (SSRN, 2026)</a>: the mismatch between research design and clinical reality produces structural misunderstandings about Korean acupuncture's scope, coherence, and outcomes.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Does the lack of peer-reviewed clinical trials mean Korean acupuncture doesn't work?</summary>
-      <div class="faq-answer">
-        <p>No. It means the right research has not yet been done — and that the existing research framework is not well-suited to evaluate a system that individuates treatment by constitutional type.</p>
-        <p>The absence of evidence is not evidence of absence, particularly when the evaluation methodology does not match the clinical system being evaluated. This is a methodological problem, not a clinical one.</p>
-        <p>There is a growing body of research on specific Korean medicine modalities (Chuna manual therapy, for example, is now covered under Korea's National Health Insurance and has multiple RCTs demonstrating efficacy for low back pain). The broader epistemological framework connecting constitutional diagnosis to clinical outcomes remains understudied.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>What is the connection between Korean medicine and systems biology?</summary>
-      <div class="faq-answer">
-        <p>Systems biology understands the body as a network of interacting components whose behavior cannot be predicted by studying any single component in isolation. Health and disease emerge from the dynamic relationships between systems — not from the malfunction of a single organ or molecule.</p>
-        <p>Korean medicine arrived at a structurally similar position through a different route: the body is a relational field, and illness arises from patterns of imbalance in the relationships between organ systems — not from a disease entity located in one place.</p>
-        <p>The convergence is not coincidental. Both frameworks are responding to the same limitation of reductionist models: that isolating variables and testing single interventions misses the dynamic, systemic nature of how biological systems actually work. This connection is explored in the SSRN working paper and developed further in the blog series on chronic pain and neuroscience.</p>
-      </div>
-    </details>
-
-  </div>
-
-  <!-- CATEGORY 4 -->
-  <div class="faq-category">
-    <p class="faq-cat-title">Clinical Practice at CALee</p>
-
-    <details>
-      <summary>What conditions does CALee Acupuncture specialize in?</summary>
-      <div class="faq-answer">
-        <p>CALee Acupuncture specializes in chronic and complex pain conditions — sciatica, peripheral neuropathy, chronic neck and back pain, headaches, and multi-system presentations where conventional treatment has provided only partial relief.</p>
-        <p>The constitutional approach is also effective for conditions that are influenced by the autonomic nervous system — stress, sleep disruption, fatigue, and digestive issues — particularly when these co-occur with pain.</p>
-        <p>For appointments, insurance questions, and services: <a href="https://caleeacu.com" target="_blank">caleeacu.com</a></p>
-      </div>
-    </details>
-
-    <details>
-      <summary>What is Korean Therapeutic Bodywork?</summary>
-      <div class="faq-answer">
-        <p>Korean Therapeutic Bodywork at CALee combines constitutional assessment, acupuncture, and hands-on Korean manual therapy (Chuna-based techniques). It is designed for patients with complex or chronic conditions — particularly those involving both neurological components (neuropathy, central sensitization) and musculoskeletal components (muscle guarding, restricted movement).</p>
-        <p>The manual therapy component uses evidence-based neuroscience principles (gate control mechanisms, autonomic modulation, oxytocin-mediated spinal inhibition) within a constitutional framework that calibrates the intervention to the patient's specific physiological pattern.</p>
-        <p>Sessions are 50 minutes. See <a href="https://caleeacu.com/services" target="_blank">caleeacu.com/services</a> for pricing and booking.</p>
-      </div>
-    </details>
-
-  </div>
-
+</div>
 </div>
 
-<footer>
-  <p>CALee Research · Hoon Lee, L.Ac., DAOM(c) · <a href="https://caleeacu.com">caleeacu.com</a> · Buena Park, CA</p>
-  <p style="margin-top:0.4rem;">For appointments: <a href="https://caleeacu.com">caleeacu.com</a> &nbsp;·&nbsp; Research inquiries: <a href="mailto:caleeacu@gmail.com">caleeacu@gmail.com</a></p>
-</footer>
+<div class="layout wrap">
+  <nav class="sidebar">
+    <div class="sidebar-title">Categories</div>
+    <div class="sidebar-nav" id="sidebarNav"></div>
+  </nav>
+  <main class="main">
+    <p class="state-msg" id="loadingMsg">Loading questions…</p>
+    <p class="state-msg state-msg--error hidden" id="errorMsg"></p>
+    <div id="faqMain"></div>
+  </main>
+</div>
 
+<script>
+// ── Config ─────────────────────────────────────────────────────
+var SHEET_ID = "1e7pPwW9FC3aTICG1GYJagYQfTALOtIzhAa0SWIga7kA";
+var FAQ_SHEET = "FAQ";
+
+// ── Utilities ──────────────────────────────────────────────────
+function csvUrl(){
+  return "https://docs.google.com/spreadsheets/d/"+SHEET_ID+"/gviz/tq?tqx=out:csv&sheet="+encodeURIComponent(FAQ_SHEET);
+}
+
+function pick(row, keys){
+  var rk = Object.keys(row);
+  for(var i=0;i<keys.length;i++){
+    var k=keys[i].toLowerCase();
+    var f=rk.find(function(x){return x&&x.trim().toLowerCase()===k;});
+    if(f!==undefined){var v=row[f];return v!=null?String(v).trim():"";}
+  }
+  return "";
+}
+
+function esc(s){
+  return String(s||"").replace(/[&<>"']/g,function(c){
+    return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+  });
+}
+
+// ── Schema ─────────────────────────────────────────────────────
+function buildSchema(items){
+  var entities = items.map(function(item){
+    return {"@type":"Question","name":item.q,"acceptedAnswer":{"@type":"Answer","text":item.a}};
+  });
+  var s=document.createElement("script");
+  s.type="application/ld+json";
+  s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":entities});
+  document.head.appendChild(s);
+}
+
+// ── Render ─────────────────────────────────────────────────────
+function makeItem(item){
+  var d=document.createElement("div");
+  d.className="faq-item";
+  d.dataset.q=(item.q+" "+item.a).toLowerCase();
+  d.innerHTML='<button class="faq-q" aria-expanded="false"><span>'+esc(item.q)+'</span><span class="faq-icon">+</span></button>'
+    +'<div class="faq-a"><div class="faq-a-inner">'+esc(item.a)+'</div></div>';
+  d.querySelector(".faq-q").addEventListener("click",function(){
+    var open=this.getAttribute("aria-expanded")==="true";
+    this.setAttribute("aria-expanded",open?"false":"true");
+    d.querySelector(".faq-a").classList.toggle("open",!open);
+  });
+  return d;
+}
+
+function render(data){
+  // Group by category (preserve order of first appearance)
+  var catOrder=[], catMap={}, catLabels={};
+  data.forEach(function(row){
+    var id=pick(row,["CategoryID","Category ID","categoryid"]);
+    var label=pick(row,["Category","category"]);
+    var q=pick(row,["Question","question"]);
+    var a=pick(row,["Answer","answer"]);
+    if(!id||!q||!a) return;
+    if(!catMap[id]){catMap[id]=[];catOrder.push(id);catLabels[id]=label||id;}
+    catMap[id].push({q:q,a:a});
+  });
+
+  buildSchema(data.map(function(row){
+    return{q:pick(row,["Question","question"]),a:pick(row,["Answer","answer"])};
+  }).filter(function(i){return i.q&&i.a;}));
+
+  // Sidebar
+  var nav=document.getElementById("sidebarNav");
+  catOrder.forEach(function(id){
+    var a=document.createElement("a");
+    a.href="#cat-"+id; a.textContent=catLabels[id]; a.dataset.cat=id;
+    nav.appendChild(a);
+  });
+
+  // Cards
+  var main=document.getElementById("faqMain");
+  catOrder.forEach(function(id){
+    var items=catMap[id];
+    var block=document.createElement("div");
+    block.className="cat-block"; block.id="cat-"+id;
+    block.innerHTML='<div class="cat-header"><h2>'+esc(catLabels[id])+'</h2>'
+      +'<span class="cat-count">'+items.length+' questions</span></div>';
+    items.forEach(function(item){block.appendChild(makeItem(item));});
+    main.appendChild(block);
+  });
+
+  // Sidebar scroll highlight
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var id=e.target.id.replace("cat-","");
+        document.querySelectorAll(".sidebar-nav a").forEach(function(a){
+          a.classList.toggle("active",a.dataset.cat===id);
+        });
+      }
+    });
+  },{rootMargin:"-40% 0px -40% 0px"});
+  document.querySelectorAll(".cat-block").forEach(function(b){obs.observe(b);});
+
+  // Search
+  var inp=document.getElementById("faqSearch"),countEl=document.getElementById("searchCount"),t;
+  inp.addEventListener("input",function(){
+    clearTimeout(t); var v=inp.value.trim();
+    t=setTimeout(function(){
+      var q=v.toLowerCase(),visible=0;
+      document.querySelectorAll(".faq-item").forEach(function(el){
+        var show=!q||el.dataset.q.indexOf(q)!==-1;
+        el.classList.toggle("hidden",!show); if(show)visible++;
+      });
+      document.querySelectorAll(".cat-block").forEach(function(b){
+        b.style.display=b.querySelectorAll(".faq-item:not(.hidden)").length?"":"none";
+      });
+      countEl.textContent=q?visible+" result"+(visible===1?"":"s"):"";
+    },150);
+  });
+}
+
+// ── Init ───────────────────────────────────────────────────────
+Papa.parse(csvUrl(),{
+  download:true, header:true, skipEmptyLines:true,
+  complete:function(results){
+    document.getElementById("loadingMsg").classList.add("hidden");
+    if(!results.data||!results.data.length){
+      var err=document.getElementById("errorMsg");
+      err.classList.remove("hidden");
+      err.textContent="No data found. Make sure the FAQ tab exists in the Google Sheet and is shared as 'Anyone with the link — Viewer'.";
+      return;
+    }
+    render(results.data);
+  },
+  error:function(){
+    document.getElementById("loadingMsg").classList.add("hidden");
+    var err=document.getElementById("errorMsg");
+    err.classList.remove("hidden");
+    err.innerHTML='Could not load FAQ data. Ensure the Google Sheet is shared as <b>Anyone with the link — Viewer</b>.';
+  }
+});
+</script>
+<script src="/assets/site.js"></script>
 </body>
 </html>

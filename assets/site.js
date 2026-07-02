@@ -4,13 +4,10 @@
   var BOOK = 'https://book.squareup.com/appointments/8aacqfmuj3vxuw/location/LHJ9XRWJX75B1/services';
 
   var PAGES = [
-    {label:'Home',      href:'/'},
-    {label:'About',     href:'/about.html'},
-    {label:'Services',  href:'/services.html'},
-    {label:'Blog',      href:'/blog.html'},
-    {label:'Learning Center', href:'/learning-center.html'},
-    {label:'FAQ',       href:'/faq.html'},
-    {label:'Contact',   href:'/contact.html'},
+    {label:'Home',     href:'/'},
+    {label:'About',    href:'/about.html'},
+    {label:'Services', href:'/services.html'},
+    {label:'Contact',  href:'/contact.html'},
   ];
 
   /* ── NAV ── */
@@ -25,6 +22,7 @@
       +'<a href="/" class="logo"><img src="'+LOGO+'" alt="CALee Acupuncture" height="42"/></a>'
       +'<button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>'
       +'<nav class="site-nav">'+links
+      +'<a href="https://research.caleeacu.com" class="nav-research" target="_blank" rel="noopener">Research Center</a>'
       +'<a href="'+BOOK+'" class="nav-book" target="_blank" rel="noopener">Book</a>'
       +'</nav>'
       +'</div>'

@@ -1,6 +1,6 @@
 /* site.js — research.caleeacu.com */
 (function(){
-  var LOGO = 'https://img1.wsimg.com/isteam/ip/939e6851-368e-49ee-b58e-05dc513bc5de/noBgWhite.png/:/rs=h:104,cg:true,m/qt=q:95';
+  var LOGO = '/assets/images/logo.svg';
 
   var PAGES = [
     {label:'Home',           href:'/'},

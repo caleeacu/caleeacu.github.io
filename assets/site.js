@@ -1,142 +1,76 @@
-/* ── Tokens ───────────────────────────────────────────────── */
-:root{
-  --ink:#1A1208;--ink-mid:#4A3F30;--ink-soft:#8A7A68;
-  --cream:#FAF7F2;--surface:#FFFFFF;--rule:#E8E0D4;
-  --jade:#2D5C46;--jade-light:#EBF2EE;--jade-mid:#4A8C6A;
-  --warm:#C8853A;--warm-light:#FDF3E8;
-  --radius:10px;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'IBM Plex Sans',system-ui,sans-serif;
-  --mono:'IBM Plex Mono',monospace;
-  --nav-h:64px;
-  --max:1040px;
-}
+/* site.js — research.caleeacu.com */
+(function(){
+  var LOGO = 'https://img1.wsimg.com/isteam/ip/939e6851-368e-49ee-b58e-05dc513bc5de/noBgWhite.png/:/rs=h:104,cg:true,m/qt=q:95';
 
-/* ── Reset ────────────────────────────────────────────────── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{font-size:16px;scroll-behavior:smooth;}
-body{background:var(--cream);color:var(--ink);font-family:var(--sans);
-  line-height:1.65;-webkit-font-smoothing:antialiased;}
-img{max-width:100%;display:block;}
-a{color:var(--jade);text-decoration:none;}
-a:hover{text-decoration:underline;}
-:focus-visible{outline:2px solid var(--jade);outline-offset:3px;}
-button{cursor:pointer;font-family:var(--sans);}
+  var PAGES = [
+    {label:'Home',           href:'/'},
+    {label:'About',          href:'/about.html'},
+    {label:'Blog',           href:'/blog.html'},
+    {label:'Learning Center',href:'/learning-center.html'},
+    {label:'FAQ',            href:'/faq.html'},
+  ];
 
-/* ── Layout ───────────────────────────────────────────────── */
-.container{max-width:var(--max);margin:0 auto;padding:0 22px;}
-
-/* ── NAV ──────────────────────────────────────────────────── */
-.site-header{
-  position:sticky;top:0;z-index:100;
-  background:var(--ink);border-bottom:1px solid rgba(255,255,255,.08);
-  height:var(--nav-h);
-}
-.site-header .container{
-  height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
-}
-.logo img{height:42px;width:auto;display:block;}
-.site-nav{display:flex;align-items:center;gap:2px;}
-.site-nav a{
-  font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;
-  color:rgba(255,255,255,.65);padding:7px 11px;border-radius:6px;
-  transition:color .12s,background .12s;
-}
-.site-nav a:hover{color:#fff;background:rgba(255,255,255,.08);text-decoration:none;}
-.site-nav a.active{color:var(--cream);font-weight:600;}
-.nav-toggle{
-  display:none;background:none;border:none;color:#fff;font-size:1.4rem;
-  padding:6px;line-height:1;
-}
-.nav-book{
-  background:var(--jade);color:#fff!important;border-radius:6px;
-  padding:7px 14px!important;font-weight:600!important;
-}
-.nav-book:hover{background:var(--jade-mid)!important;}
-
-/* Mobile nav */
-@media(max-width:820px){
-  .nav-toggle{display:block;}
-  .site-nav{
-    display:none;flex-direction:column;align-items:flex-start;gap:0;
-    position:absolute;top:var(--nav-h);left:0;right:0;
-    background:var(--ink);padding:10px 22px 16px;border-bottom:1px solid rgba(255,255,255,.1);
+  function buildNav(){
+    var path = window.location.pathname;
+    var links = PAGES.map(function(p){
+      var active = (path===p.href||(p.href!=='/'&&path.indexOf(p.href.replace('.html',''))===0))?' class="active"':'';
+      return '<a href="'+p.href+'"'+active+'>'+p.label+'</a>';
+    }).join('');
+    var html = '<header class="site-header">'
+      +'<div class="container">'
+      +'<a href="/" class="logo"><img src="'+LOGO+'" alt="CALee Research" height="42"/></a>'
+      +'<button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>'
+      +'<nav class="site-nav">'+links
+      +'<a href="https://caleeacu.com" class="nav-clinic" target="_blank" rel="noopener">← Clinic</a>'
+      +'</nav>'
+      +'</div>'
+      +'</header>';
+    document.body.insertAdjacentHTML('afterbegin', html);
+    var btn=document.querySelector('.nav-toggle'), nav=document.querySelector('.site-nav');
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+      btn.textContent=open?'✕':'☰';
+    });
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){ nav.classList.remove('open'); btn.textContent='☰'; });
+    });
   }
-  .site-nav.open{display:flex;}
-  .site-nav a{width:100%;padding:11px 8px;}
-}
 
-/* ── FOOTER ───────────────────────────────────────────────── */
-.site-footer{background:var(--ink);color:rgba(255,255,255,.55);padding:40px 0 32px;}
-.footer-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;}
-.footer-col h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
-  text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:12px;}
-.footer-col p,.footer-col a{font-size:.86rem;line-height:1.7;color:rgba(255,255,255,.55);}
-.footer-col a:hover{color:#fff;text-decoration:none;}
-.footer-bottom{margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
-  font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.3);}
-.social-links{display:flex;gap:12px;margin-top:10px;}
-.social-links a{font-size:.82rem;}
-@media(max-width:640px){.footer-inner{grid-template-columns:1fr;gap:22px;}}
+  function buildFooter(){
+    var html = '<footer class="site-footer">'
+      +'<div class="container">'
+      +'<div class="footer-inner">'
+      +'<div class="footer-col">'
+      +'<h4>CALee Research</h4>'
+      +'<p>Korean medicine framework, evidence map,<br>clinical education, and published research.</p>'
+      +'<p style="margin-top:8px;"><a href="https://caleeacu.com" target="_blank" rel="noopener" style="color:#8DBFA0;">→ CALee Acupuncture Clinic</a></p>'
+      +'</div>'
+      +'<div class="footer-col">'
+      +'<h4>Research</h4>'
+      +'<a href="/learning-center.html">Learning Center</a><br>'
+      +'<a href="/blog.html">Blog — Grandpa\'s Tale</a><br>'
+      +'<a href="/faq.html">FAQ</a><br>'
+      +'<a href="https://ssrn.com/abstract=6405558" target="_blank" rel="noopener">SSRN Working Paper</a><br>'
+      +'<a href="https://scholar.google.com/citations?user=wW5jSL4AAAAJ" target="_blank" rel="noopener">Google Scholar</a>'
+      +'</div>'
+      +'<div class="footer-col">'
+      +'<h4>Publications</h4>'
+      +'<a href="https://www.amazon.com/dp/B0GSXDDLGK" target="_blank" rel="noopener">Korean Medicine: Theoretical Foundations</a><br>'
+      +'<a href="https://www.amazon.com/dp/B0GX374FK9" target="_blank" rel="noopener">Classical Medicine and Modern Disease</a><br>'
+      +'<p style="margin-top:10px;"><a href="mailto:caleeacu@gmail.com">caleeacu@gmail.com</a></p>'
+      +'</div>'
+      +'</div>'
+      +'<div class="footer-bottom">'
+      +'<span>© '+new Date().getFullYear()+' CALee Acupuncture — Hoon Lee, L.Ac., DAOM(c)</span>'
+      +'<span><a href="https://caleeacu.com" style="color:rgba(255,255,255,.3);">caleeacu.com</a></span>'
+      +'</div>'
+      +'</div>'
+      +'</footer>';
+    document.body.insertAdjacentHTML('beforeend', html);
+  }
 
-/* ── PAGE HEADER ──────────────────────────────────────────── */
-.page-hero{padding:52px 0 38px;border-bottom:2px solid var(--ink);}
-.page-hero .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--jade);margin-bottom:10px;}
-.page-hero h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:700;
-  letter-spacing:-.01em;line-height:1.1;margin-bottom:10px;}
-.page-hero p{font-size:1rem;color:var(--ink-mid);max-width:580px;line-height:1.7;}
-
-/* ── SECTION ──────────────────────────────────────────────── */
-.section{padding:48px 0;}
-.section+.section{border-top:1px solid var(--rule);}
-.section-title{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);
-  font-weight:600;margin-bottom:20px;}
-.section-eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;}
-
-/* ── BOOK BUTTON ──────────────────────────────────────────── */
-.btn{
-  display:inline-flex;align-items:center;gap:9px;
-  font-family:var(--sans);font-weight:600;font-size:.95rem;
-  padding:13px 26px;border-radius:8px;border:none;
-  transition:background .14s,transform .1s;text-decoration:none;
-}
-.btn:hover{transform:translateY(-1px);text-decoration:none;}
-.btn-jade{background:var(--jade);color:#fff;}
-.btn-jade:hover{background:var(--jade-mid);color:#fff;}
-.btn-outline{background:transparent;color:var(--jade);border:2px solid var(--jade);}
-.btn-outline:hover{background:var(--jade-light);}
-
-/* ── CARDS ────────────────────────────────────────────────── */
-.card{background:var(--surface);border:1.5px solid var(--rule);border-radius:var(--radius);padding:20px;}
-.card:hover{border-color:rgba(45,92,70,.3);}
-
-/* ── DARK SECTION ─────────────────────────────────────────── */
-.section-dark{background:var(--ink);color:var(--cream);padding:48px 0;}
-.section-dark .section-title{color:var(--cream);}
-.section-dark p{color:#C8BFB0;}
-.section-dark a{color:#8DBFA0;}
-
-/* ── STATE MESSAGES ───────────────────────────────────────── */
-.state-msg{padding:18px 22px;border:1.5px dashed var(--rule);border-radius:var(--radius);
-  font-family:var(--mono);font-size:.84rem;color:var(--ink-soft);margin:20px 0;}
-.state-msg--error{border-color:rgba(148,64,48,.4);color:rgb(148,64,48);background:rgba(148,64,48,.04);}
-.hidden{display:none!important;}
-
-/* ── UTILS ────────────────────────────────────────────────── */
-.grid-2{display:grid;grid-template-columns:1fr;gap:14px;}
-.grid-3{display:grid;grid-template-columns:1fr;gap:12px;}
-@media(min-width:560px){.grid-2{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:560px){.grid-3{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:820px){.grid-3{grid-template-columns:repeat(3,1fr);}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
-
-/* Research Center nav link */
-.nav-research{
-  font-family:var(--mono)!important;font-size:.72rem!important;
-  color:rgba(255,255,255,.5)!important;border:1px solid rgba(255,255,255,.15)!important;
-  border-radius:5px!important;padding:5px 10px!important;margin-right:4px!important;
-}
-.nav-research:hover{color:#fff!important;border-color:rgba(255,255,255,.4)!important;text-decoration:none!important;}
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){ buildNav(); buildFooter(); });
+  } else { buildNav(); buildFooter(); }
+})();

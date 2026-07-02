@@ -133,10 +133,16 @@ button{cursor:pointer;font-family:var(--sans);}
 @media(min-width:820px){.grid-3{grid-template-columns:repeat(3,1fr);}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
 
-/* Research Center nav link */
-.nav-research{
+/* ── Research site extras ── */
+.nav-clinic{
   font-family:var(--mono)!important;font-size:.72rem!important;
-  color:rgba(255,255,255,.5)!important;border:1px solid rgba(255,255,255,.15)!important;
-  border-radius:5px!important;padding:5px 10px!important;margin-right:4px!important;
+  color:rgba(255,255,255,.45)!important;border:1px solid rgba(255,255,255,.15)!important;
+  border-radius:5px!important;padding:5px 10px!important;margin-left:6px!important;
 }
-.nav-research:hover{color:#fff!important;border-color:rgba(255,255,255,.4)!important;text-decoration:none!important;}
+.nav-clinic:hover{color:#fff!important;border-color:rgba(255,255,255,.4)!important;text-decoration:none!important;}
+.research-badge{
+  display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:.22em .7em;border-radius:4px;
+  background:rgba(45,92,70,.1);color:var(--jade);border:1px solid rgba(45,92,70,.25);
+  margin-bottom:10px;
+}

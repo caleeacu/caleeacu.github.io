@@ -1,167 +1,814 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learning Center — Korean medicine publications, topic guides, clinical blog, and live research evidence map by Hoon Lee, L.Ac., DAOM(c).">
-  <title>Learning Center — Korean Medicine Resources | CALee Research</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink: #1a1a1a; --ink-soft: #444; --ink-muted: #888;
-      --paper: #fafaf8; --paper-warm: #f4f2ee; --rule: #d8d4cc;
-      --accent: #2d5a8e; --accent-soft: #e8eef5;
-      --serif: 'EB Garamond', Georgia, serif;
-      --sans: 'Inter', system-ui, sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--sans); background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.6; }
-    nav { border-bottom: 1px solid var(--rule); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; background: var(--paper); position: sticky; top: 0; z-index: 100; }
-    .nav-brand { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); text-decoration: none; }
-    .nav-brand span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 0.85rem; color: var(--ink-soft); text-decoration: none; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-clinic { font-size: 0.8rem; color: var(--accent); text-decoration: none; border: 1px solid var(--accent); padding: 0.3rem 0.8rem; border-radius: 3px; }
-    .nav-clinic:hover { background: var(--accent); color: white; }
-    .page { max-width: 860px; margin: 0 auto; padding: 4rem 2rem; }
-    .page-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
-    .page-title { font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400; line-height: 1.2; margin-bottom: 0.8rem; }
-    .page-sub { font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 3rem; max-width: 560px; line-height: 1.7; }
-    .divider { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
-    .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 1.5rem; }
-    .pub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
-    .pub-card { border: 1px solid var(--rule); border-radius: 4px; padding: 1.5rem; background: white; transition: border-color 0.2s, box-shadow 0.2s; }
-    .pub-card:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(45,90,142,0.08); }
-    .pub-type { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
-    .pub-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.35; color: var(--ink); margin-bottom: 0.6rem; }
-    .pub-desc { font-size: 0.84rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 1rem; }
-    .pub-link { font-size: 0.8rem; color: var(--accent); text-decoration: none; font-weight: 500; }
-    .pub-link:hover { text-decoration: underline; }
-    .topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
-    .topic-card { background: var(--accent-soft); border-radius: 4px; padding: 1.2rem; }
-    .topic-title { font-family: var(--serif); font-size: 0.95rem; font-weight: 600; color: var(--accent); margin-bottom: 0.4rem; }
-    .topic-desc { font-size: 0.8rem; color: var(--ink-soft); line-height: 1.5; }
-    .blog-promo { border: 1px solid var(--rule); border-radius: 4px; padding: 1.8rem 2rem; background: white; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; }
-    .blog-promo-text h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; margin-bottom: 0.4rem; }
-    .blog-promo-text p { font-size: 0.85rem; color: var(--ink-soft); }
-    .blog-promo-link { white-space: nowrap; font-size: 0.85rem; font-weight: 500; color: var(--accent); text-decoration: none; border: 1px solid var(--accent); padding: 0.5rem 1.1rem; border-radius: 3px; }
-    .blog-promo-link:hover { background: var(--accent); color: white; }
-    .evidence-box { border: 1px solid var(--rule); border-radius: 4px; padding: 2rem; background: white; text-align: center; }
-    .evidence-box h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; margin-bottom: 0.5rem; }
-    .evidence-box p { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 1.2rem; line-height: 1.6; }
-    .evidence-note { font-size: 0.75rem; color: var(--ink-muted); margin-top: 0.8rem; }
-    footer { border-top: 1px solid var(--rule); padding: 2rem; text-align: center; font-size: 0.8rem; color: var(--ink-muted); background: var(--paper-warm); }
-    footer a { color: var(--accent); text-decoration: none; }
-    @media (max-width: 640px) { .nav-links { display: none; } .page { padding: 2.5rem 1.2rem; } .blog-promo { flex-direction: column; } }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Learning Center — CALee Research | Paper DB, Evidence Map & Guides</title>
+<meta name="description" content="Korean acupuncture learning center: evidence map, paper classification database (72+ papers), topic guides, and publications by Hoon Lee, L.Ac."/>
+<meta name="x-skip" content="Publications, clinical blog posts, topic guides, and a live research evidence map — all in one searchable resource by Hoon Lee, L.Ac., DAOM(c) at CALee Acupuncture." />
+<meta property="og:title" content="Learning Center — CALee Acupuncture" />
+<meta property="og:description" content="Searchable resource hub: Korean medicine publications, blog articles, topic guides, and live research evidence map." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/style.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<style>
+:root{
+  --bg:#F2F3F0; --surface:#FAFAFC; --ink:#16202B;
+  --mid:#4A5868; --soft:#7A8A98; --rule:#D5D8D2;
+  --rp-rgb:55,110,90; --ci-rgb:32,66,110;
+  --nfs-rgb:148,64,48; --mul-rgb:90,72,110;
+  --pub-rgb:30,90,110; --blog-rgb:90,72,40; --topic-rgb:60,80,60;
+  --radius:10px;
+  --mono:'IBM Plex Mono',monospace;
+  --serif:'IBM Plex Serif',serif;
+  --sans:'IBM Plex Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+a{color:rgb(var(--ci-rgb));text-decoration-color:rgba(var(--ci-rgb),.3);}
+a:hover{text-decoration-color:rgb(var(--ci-rgb));}
+:focus-visible{outline:2px solid rgb(var(--ci-rgb));outline-offset:2px;}
+
+/* ── Header ── */
+.lc-page-header{padding:48px 0 30px;border-bottom:2px solid var(--ink);}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:12px;}
+.lc-page-header h1{font-family:var(--serif);font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:8px;}
+.site-header h1 em{font-style:normal;color:var(--mid);}
+.header-bottom{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;margin-top:18px;}
+.lede{max-width:600px;font-size:.97rem;color:var(--mid);line-height:1.65;flex:1 1 320px;}
+
+/* ── Search bar ── */
+.search-wrap{flex:1 1 260px;position:relative;}
+.search-wrap svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--soft);pointer-events:none;}
+#globalSearch{
+  width:100%;font-family:var(--sans);font-size:.97rem;
+  padding:11px 14px 11px 40px;
+  border:2px solid var(--ink);border-radius:8px;
+  background:var(--surface);color:var(--ink);
+}
+#globalSearch:focus{outline:none;border-color:rgb(var(--ci-rgb));}
+.search-count{font-family:var(--mono);font-size:.72rem;color:var(--soft);margin-top:5px;letter-spacing:.03em;}
+
+/* ── Tabs ── */
+.tab-bar{padding:20px 0 0;display:flex;flex-wrap:wrap;gap:0;border-bottom:1.5px solid var(--rule);}
+.tab{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;
+  background:transparent;border:none;border-bottom:3px solid transparent;
+  padding:9px 18px 10px;color:var(--soft);cursor:pointer;white-space:nowrap;
+  transition:color .12s,border-color .12s;
+}
+.tab:hover{color:var(--ink);}
+.tab.active{color:var(--ink);border-bottom-color:var(--ink);font-weight:600;}
+.tab .tc{display:inline-block;margin-left:5px;opacity:.6;font-size:.7rem;}
+
+/* ── Grid ── */
+main{padding:22px 0 72px;}
+.section-label{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--rule);}
+.card-grid{display:grid;grid-template-columns:1fr;gap:11px;}
+@media(min-width:820px){.card-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1020px){.card-grid.cols3{grid-template-columns:repeat(3,1fr);}}
+
+/* ── Cards ── */
+.card{
+  background:var(--surface);border:1.5px solid var(--rule);
+  border-left:4px solid var(--rule);border-radius:var(--radius);
+  padding:16px 18px 14px;
+}
+.card[data-type="publication"]{border-left-color:rgb(var(--pub-rgb));}
+.card[data-type="blog"]{border-left-color:rgb(var(--blog-rgb));}
+.card[data-type="topic"]{border-left-color:rgb(var(--topic-rgb));}
+.card[data-cat="rp"] {border-left-color:rgb(var(--rp-rgb));}
+.card[data-cat="ci"] {border-left-color:rgb(var(--ci-rgb));}
+.card[data-cat="nfs"]{border-left-color:rgb(var(--nfs-rgb));}
+.card[data-cat="mul"]{border-left-color:rgb(var(--mul-rgb));}
+.card[data-cat="excluded"]{border-left-style:dashed;border-left-color:var(--soft);}
+.card-top{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px;align-items:center;}
+.badge{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;
+  padding:.22em .65em;border-radius:4px;border:1.5px solid var(--rule);
+  background:var(--bg);color:var(--mid);
+}
+.badge-pub {border-color:rgba(var(--pub-rgb),.4); color:rgb(var(--pub-rgb)); background:rgba(var(--pub-rgb),.07);}
+.badge-blog{border-color:rgba(var(--blog-rgb),.4);color:rgb(var(--blog-rgb));background:rgba(var(--blog-rgb),.07);}
+.badge-topic{border-color:rgba(var(--topic-rgb),.4);color:rgb(var(--topic-rgb));background:rgba(var(--topic-rgb),.07);}
+.badge-rp {border-color:rgba(var(--rp-rgb),.4); color:rgb(var(--rp-rgb)); background:rgba(var(--rp-rgb),.07);}
+.badge-ci {border-color:rgba(var(--ci-rgb),.4); color:rgb(var(--ci-rgb)); background:rgba(var(--ci-rgb),.07);}
+.badge-nfs{border-color:rgba(var(--nfs-rgb),.4);color:rgb(var(--nfs-rgb));background:rgba(var(--nfs-rgb),.07);}
+.badge-mul{border-color:rgba(var(--mul-rgb),.4);color:rgb(var(--mul-rgb));background:rgba(var(--mul-rgb),.07);}
+.card h3{font-family:var(--serif);font-size:1.01rem;font-weight:600;line-height:1.35;margin-bottom:5px;}
+.card h3 a{color:inherit;}
+.card h3 a:hover{color:rgb(var(--ci-rgb));}
+.card-meta{font-size:.8rem;color:var(--soft);margin-bottom:7px;}
+.card-desc{font-size:.92rem;line-height:1.55;margin-bottom:7px;color:var(--mid);}
+.card-refs{font-family:var(--mono);font-size:.68rem;color:var(--soft);margin-top:6px;}
+.card-note summary{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--mid);cursor:pointer;text-transform:uppercase;}
+.card-note p{margin-top:6px;font-size:.86rem;color:var(--mid);line-height:1.5;}
+.card-foot{font-family:var(--mono);font-size:.68rem;color:var(--soft);margin-top:9px;padding-top:7px;border-top:1px solid var(--rule);}
+.excluded-reason{font-size:.88rem;color:var(--mid);}
+.excluded-reason strong{color:var(--ink);}
+
+/* ── Research map pills ── */
+.rm-legend{padding:18px 0 16px;display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;border-bottom:1px solid var(--rule);}
+.fw-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 13px;border:1.5px solid;border-radius:6px;
+  font-family:var(--mono);font-size:.76rem;
+  cursor:pointer;background:transparent;
+  transition:background .12s;
+}
+.fw-pill .abbr{font-weight:600;letter-spacing:.04em;}
+.fw-pill .cnt{font-weight:700;margin-left:2px;}
+.fw-pill[aria-pressed="true"]{box-shadow:0 0 0 3px currentColor;}
+.fw-rp {color:rgb(var(--rp-rgb)); border-color:rgb(var(--rp-rgb));}
+.fw-ci {color:rgb(var(--ci-rgb)); border-color:rgb(var(--ci-rgb));}
+.fw-nfs{color:rgb(var(--nfs-rgb));border-color:rgb(var(--nfs-rgb));}
+.fw-mul{color:rgb(var(--mul-rgb));border-color:rgb(var(--mul-rgb));}
+.fw-rp[aria-pressed="true"] {background:rgba(var(--rp-rgb),.1);}
+.fw-ci[aria-pressed="true"] {background:rgba(var(--ci-rgb),.1);}
+.fw-nfs[aria-pressed="true"]{background:rgba(var(--nfs-rgb),.1);}
+.fw-mul[aria-pressed="true"]{background:rgba(var(--mul-rgb),.1);}
+.rm-sub-filter{display:flex;flex-wrap:wrap;gap:8px;padding:12px 0 16px;}
+.rm-sub-filter select{font-family:var(--sans);font-size:.88rem;padding:7px 11px;border:1.5px solid var(--rule);border-radius:8px;background:var(--surface);color:var(--ink);}
+.rm-tabs{display:flex;gap:0;border:1.5px solid var(--ink);border-radius:8px;width:fit-content;overflow:hidden;margin-bottom:14px;}
+.rm-tab{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;background:transparent;border:none;padding:8px 18px;color:var(--mid);cursor:pointer;border-right:1.5px solid var(--ink);}
+.rm-tab:last-child{border-right:none;}
+.rm-tab.active{background:var(--ink);color:var(--bg);}
+
+/* ── States ── */
+.state-msg{margin:30px 0;padding:18px 22px;border:1.5px dashed var(--rule);border-radius:var(--radius);font-family:var(--mono);font-size:.86rem;color:var(--soft);}
+.state-msg--error{border-color:rgba(var(--nfs-rgb),.4);color:rgb(var(--nfs-rgb));background:rgba(var(--nfs-rgb),.04);}
+.state-msg code{background:rgba(0,0,0,.06);padding:.1em .4em;border-radius:4px;}
+.hidden{display:none !important;}
+
+/* ── Footer ── */
+.lc-page-footer{padding:26px 0 52px;border-top:2px solid var(--ink);}
+.lc-page-footer p{font-family:var(--mono);font-size:.74rem;color:var(--soft);line-height:1.7;max-width:760px;margin-bottom:10px;}
+.lc-page-footer strong{color:var(--ink);}
+.footer-links a{font-size:.78rem;margin-right:14px;}
+
+@media(prefers-reduced-motion:reduce){*{transition:none !important;}}
+
+  /* ── Google overview link ── */
+  .card-google-link a{font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;padding:.22em .65em;border-radius:4px;border:1.5px solid rgba(66,133,244,.4);background:rgba(66,133,244,.07);color:#4285f4;text-decoration:none;}
+  .card-google-link a:hover{background:rgba(66,133,244,.15);}
+
+  /* ── Idle state ── */
+  .idle-msg{padding:36px 0 20px;border-bottom:1px solid var(--rule);}
+  .idle-msg p{font-family:var(--mono);font-size:.9rem;color:var(--soft);margin-bottom:14px;}
+  .idle-hints{display:flex;flex-wrap:wrap;gap:8px;}
+  .idle-hints span{font-family:var(--mono);font-size:.78rem;color:var(--soft);}
+  .hint-link{color:rgb(var(--ci-rgb));text-decoration:none;border:1px solid rgba(var(--ci-rgb),.3);padding:.2em .6em;border-radius:4px;}
+  .hint-link:hover{background:rgba(var(--ci-rgb),.07);}
+</style>
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-brand">CALee <span>Research</span></a>
-  <ul class="nav-links">
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/learning-center.html">Learning Center</a></li>
-    <li><a href="/faq.html">FAQ</a></li>
-    <li><a href="https://blog.caleeacu.com" target="_blank">Blog</a></li>
-  </ul>
-  <a href="https://caleeacu.com" class="nav-clinic">← Clinic</a>
-</nav>
-
-<div class="page">
-  <p class="page-eyebrow">Learning Center</p>
-  <h1 class="page-title">Korean Medicine Research & Clinical Resources</h1>
-  <p class="page-sub">Publications, topic guides, clinical blog, and a practitioner-maintained research evidence map — curated by Hoon Lee, L.Ac., DAOM(c).</p>
-
-  <!-- PUBLICATIONS -->
-  <p class="section-label">Publications</p>
-  <div class="pub-grid">
-
-    <div class="pub-card">
-      <p class="pub-type">SSRN Working Paper · 2026</p>
-      <p class="pub-title">A Conceptual Framework for Diagnostic Reasoning in Korean Acupuncture</p>
-      <p class="pub-desc">Relational Process, Constitutional Individuation, and the Non-Fixed Self. Argues that Korean acupuncture diagnosis requires its own evaluative paradigm — not a modified version of biomedical RCT design.</p>
-      <a href="https://ssrn.com/abstract=6405558" target="_blank" class="pub-link">Read on SSRN →</a>
-    </div>
-
-    <div class="pub-card">
-      <p class="pub-type">Amazon KDP · 2026</p>
-      <p class="pub-title">Korean Medicine: Theoretical Foundations, Diagnostic Reasoning, and Clinical Practice</p>
-      <p class="pub-desc">A systematic account of Korean medicine as a distinct epistemological tradition — from classical roots through Sasang constitutional medicine, Saam acupuncture, and pattern-based clinical reasoning.</p>
-      <a href="https://www.amazon.com/dp/B0GSXDDLGK" target="_blank" class="pub-link">View on Amazon →</a>
-    </div>
-
-    <div class="pub-card">
-      <p class="pub-type">Amazon KDP · 2026</p>
-      <p class="pub-title">Classical Medicine and Modern Disease: Two Medical Traditions Reading the Aging Body</p>
-      <p class="pub-desc">11 geriatric conditions — hypertension, diabetes, dementia, Parkinson's, osteoporosis, and more — read simultaneously through biomedical and classical Korean medicine lenses.</p>
-      <a href="https://www.amazon.com/dp/B0GX374FK9" target="_blank" class="pub-link">View on Amazon →</a>
-    </div>
-
-  </div>
-
-  <hr class="divider">
-
-  <!-- TOPIC GUIDES -->
-  <p class="section-label">Topic Guides</p>
-  <div class="topic-grid">
-    <div class="topic-card">
-      <p class="topic-title">Constitutional Medicine</p>
-      <p class="topic-desc">Sasang and Eight Constitution typologies — what they are, how they differ, and how they guide treatment.</p>
-    </div>
-    <div class="topic-card">
-      <p class="topic-title">Saam Acupuncture</p>
-      <p class="topic-desc">The classical 17th-century Korean four-needle method — origins, logic, and clinical application.</p>
-    </div>
-    <div class="topic-card">
-      <p class="topic-title">Korean vs. TCM</p>
-      <p class="topic-desc">Why Korean acupuncture preserved dialectical reasoning while modern TCM moved toward biomedical correspondence.</p>
-    </div>
-    <div class="topic-card">
-      <p class="topic-title">Chronic Pain & Neuroscience</p>
-      <p class="topic-desc">Central sensitization, gate control theory, and how Korean constitutional medicine maps onto modern pain science.</p>
-    </div>
-    <div class="topic-card">
-      <p class="topic-title">Relational Process Thinking</p>
-      <p class="topic-desc">The epistemological foundation — Whitehead, Merleau-Ponty, Buddhist anātman, and systems biology.</p>
-    </div>
-    <div class="topic-card">
-      <p class="topic-title">Geriatric & Aging</p>
-      <p class="topic-desc">How classical and modern traditions read the aging body — from hypertension to cognitive decline.</p>
+<header class="lc-page-header"><div style="max-width:1040px;margin:0 auto;padding:0 22px"><div class="research-badge" style="margin-top:16px;">CALee Research · Paper DB</div></div>
+  <div class="wrap">
+    <p class="kicker">CALee Acupuncture &nbsp;·&nbsp; Hoon Lee, L.Ac., DAOM(c)</p>
+    <h1>Learning Center<br><em>Korean Medicine &amp; Acupuncture Resource Hub</em></h1>
+    <div class="header-bottom">
+      <p class="lede">Publications, clinical blog articles, topic guides, and a live research evidence map — search across everything at once.</p>
+      <div class="search-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="globalSearch" placeholder="Search all content…" aria-label="Search all learning center content" />
+        <div class="search-count" id="searchCount"></div>
+      </div>
     </div>
   </div>
+</header>
 
-  <hr class="divider">
-
-  <!-- BLOG -->
-  <p class="section-label">Clinical Blog</p>
-  <div class="blog-promo">
-    <div class="blog-promo-text">
-      <h3>Korean Medicine in Practice — 100+ Articles</h3>
-      <p>Constitutional medicine, chronic pain, neuroscience, aging, and integrative research. Published in Korean, English, Spanish, and Vietnamese. Updated weekly.</p>
-    </div>
-    <a href="https://blog.caleeacu.com" target="_blank" class="blog-promo-link">Read the Blog →</a>
-  </div>
-
-  <hr class="divider">
-
-  <!-- EVIDENCE MAP -->
-  <p class="section-label">Research Evidence Map</p>
-  <div class="evidence-box">
-    <h3>Live Literature Classification — Korean Acupuncture Research</h3>
-    <p>A practitioner-maintained classification of peer-reviewed studies on Korean acupuncture and constitutional medicine. Studies are classified by evidence type (meta-analysis, RCT, cohort, case report) and relevance to the constitutional framework.</p>
-    <p><em style="font-size: 0.82rem; color: var(--ink-muted);">Evidence map loading from live database...</em></p>
-    <p class="evidence-note">This is not a systematic review. Classification reflects one interpretive lens. Studies that do not fit the framework are recorded in the Excluded tab. Maintained by Hoon Lee, L.Ac., DAOM(c).</p>
-  </div>
-
+<div class="wrap">
+  <nav class="tab-bar" role="tablist" aria-label="Content sections">
+    <button class="tab active" data-section="all"    role="tab" aria-selected="true">All<span class="tc" id="tc-all"></span></button>
+    <button class="tab"        data-section="pub"    role="tab">Publications<span class="tc" id="tc-pub"></span></button>
+    <button class="tab"        data-section="blog"   role="tab">Blog<span class="tc" id="tc-blog"></span></button>
+    <button class="tab"        data-section="topic"  role="tab">Topic Guides<span class="tc" id="tc-topic"></span></button>
+    <button class="tab"        data-section="rmap"   role="tab">Research Map<span class="tc" id="tc-rmap"></span></button>
+  </nav>
 </div>
 
-<footer>
-  <p>CALee Research · Hoon Lee, L.Ac., DAOM(c) · <a href="https://caleeacu.com">caleeacu.com</a> · Buena Park, CA</p>
-  <p style="margin-top:0.4rem;">Research inquiries: <a href="mailto:caleeacu@gmail.com">caleeacu@gmail.com</a></p>
+
+<div class="wrap">
+  <div id="idle-msg" class="idle-msg">
+    <p>Search above or select a tab to explore the resource library.</p>
+    <div class="idle-hints">
+      <span>Try: <a href="#" class="hint-link" data-q="sasang">sasang</a></span>
+      <span><a href="#" class="hint-link" data-q="hypertension">hypertension</a></span>
+      <span><a href="#" class="hint-link" data-q="saam">saam</a></span>
+      <span><a href="#" class="hint-link" data-q="dementia">dementia</a></span>
+      <span><a href="#" class="hint-link" data-q="constitution">constitution</a></span>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- ── PUBLICATIONS ── -->
+  <div class="lc-section" id="sec-pub">
+    <div class="section-label">Publications</div>
+    <div class="card-grid" id="grid-pub"></div>
+  </div>
+
+  <!-- ── BLOG ── -->
+  <div class="lc-section" id="sec-blog">
+    <div class="section-label">Clinical Blog — Grandpa's Tale</div>
+    <div class="card-grid" id="grid-blog"></div>
+  </div>
+
+  <!-- ── TOPIC GUIDES ── -->
+  <div class="lc-section" id="sec-topic">
+    <div class="section-label">Topic Guides</div>
+    <div class="card-grid cols3" id="grid-topic"></div>
+  </div>
+
+  <!-- ── RESEARCH MAP ── -->
+  <div class="lc-section" id="sec-rmap">
+    <div class="section-label">Research Evidence Map <span style="font-weight:400;font-size:.9em">— live from database</span></div>
+
+    <div class="rm-legend" id="rmLegend">
+      <div id="rmPills" role="group" aria-label="Filter by framework"></div>
+      <span style="font-family:var(--mono);font-size:.76rem;color:var(--soft)" id="rmMeta"></span>
+    </div>
+
+    <div style="padding:12px 0 4px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+      <div class="rm-tabs">
+        <button class="rm-tab active" data-rmtab="classified">Classified<span id="rmClassCount"></span></button>
+        <button class="rm-tab" data-rmtab="excluded">Excluded<span id="rmExclCount"></span></button>
+      </div>
+      <div class="rm-sub-filter" id="rmSubFilter">
+        <select id="rmEvidence"><option value="">All evidence types</option><option>Meta-analysis</option><option>Systematic Review</option><option>RCT</option><option>Cohort</option><option>Case Report</option></select>
+        <select id="rmRelevance"><option value="">All relevance</option><option value="High">High</option><option value="Medium">Medium</option><option value="Low">Low</option></select>
+        <select id="rmSort"><option value="date-desc">Most recent</option><option value="no-asc">No. ↑</option><option value="relevance-desc">Relevance ↓</option></select>
+      </div>
+    </div>
+
+    <p class="state-msg" id="rmLoading">Loading research data…</p>
+    <p class="state-msg hidden" id="rmIdleMsg">Select a framework filter above, or use the search bar to explore classified studies.</p>
+    <p class="state-msg state-msg--error hidden" id="rmError"></p>
+    <p class="state-msg hidden" id="rmEmpty"></p>
+    <div class="card-grid" id="grid-rmap" aria-live="polite"></div>
+  </div>
+
+</main>
+
+<footer class="lc-page-footer wrap">
+  <p><strong>About this resource.</strong> Publications and topic guides are curated by Hoon Lee, L.Ac., DAOM(c). The Research Evidence Map is an ongoing practitioner-maintained literature classification — not a systematic review. Classification reflects one interpretive lens; studies that do not fit the framework are recorded in the Excluded tab.</p>
+
 </footer>
 
+<script>
+// ── Static content data ───────────────────────────────────────
+var PUBLICATIONS = [
+  {
+    id:"ssrn",type:"publication",
+    title:"A Conceptual Framework for Diagnostic Reasoning in Korean Acupuncture: Relational Process, Constitutional Individuation, and the Non-Fixed Self",
+    meta:"Hoon Lee, L.Ac. · SSRN Working Paper · 2026",
+    desc:"Introduces three clinical frameworks — RP, CI, and NFS — for understanding Korean acupuncture beyond biomedical categories. Medical Epistemology · Acupuncture Research · East Asian Medical Theory.",
+    badge:"SSRN 2026",badgeClass:"badge-pub",
+    link:"https://ssrn.com/abstract=6405558",
+    googleLink:"https://www.bing.com/search?q=A+Conceptual+Framework+for+Diagnostic+Reasoning+in+Korean+Acupuncture+Relational+Process+Constitutional+Individuation+Non-Fixed+Self",
+    tags:"ssrn framework relational process constitutional individuation non-fixed self epistemology research"
+  },
+  {
+    id:"book1",type:"publication",
+    title:"Korean Medicine: Theoretical Foundations, Diagnostic Reasoning, and Clinical Practice",
+    meta:"Hoon Lee, L.Ac. · Amazon KDP · First Edition · 2026 · ISBN 979-8253850350",
+    desc:"A relational approach to acupuncture, constitutional medicine, and systems healing. 19 chapters + appendices covering history, diagnosis, classical foundations, and clinical application.",
+    badge:"KDP 2026",badgeClass:"badge-pub",
+    link:"https://www.amazon.com/dp/B0GSXDDLGK",
+    googleLink:"https://www.bing.com/search?q=Korean+Medicine+Theoretical+Foundations+Diagnostic+Reasoning+Clinical+Practice+Hoon+Lee",
+    tags:"korean medicine book foundations diagnostic reasoning clinical practice constitutional sasang eight constitution"
+  },
+  {
+    id:"book2",type:"publication",
+    title:"Classical Medicine and Modern Disease: Two Medical Traditions Reading the Aging Body",
+    meta:"Hoon Lee, L.Ac. · Amazon KDP · First Edition · 2026 · ISBN 979-8259011137",
+    desc:"11 geriatric conditions examined through both biomedical and classical lenses: Hypertension, Diabetes, Dementia, Parkinson's, COPD, Constipation, and 5 more.",
+    badge:"KDP 2026",badgeClass:"badge-pub",
+    link:"https://www.amazon.com/dp/B0GX374FK9",
+    googleLink:"https://www.bing.com/search?q=Classical+Medicine+and+Modern+Disease+Two+Medical+Traditions+Reading+the+Aging+Body+Hoon+Lee",
+    tags:"classical medicine modern disease aging geriatric hypertension diabetes dementia parkinsons copd constipation"
+  }
+];
+
+var BLOG_POSTS = [
+  {
+    id:"b0",type:"blog",
+    title:"Grandpa's Tale — Clinical Blog",
+    meta:"blog.caleeacu.com · Korean & English · Updated regularly",
+    desc:"Where classical tradition meets everyday clinical questions. Stories, concepts, and reflections from practice.",
+    badge:"Blog Hub",badgeClass:"badge-blog",
+    link:"https://blog.caleeacu.com",
+    tags:"blog grandpa clinical stories practice korean english"
+  },
+  {
+    id:"b1",type:"blog",
+    title:"Is Acupuncture a Legal and Legitimate Medical Practice?",
+    meta:"CALee Blog · 2025",
+    desc:"Why acupuncture is a licensed, regulated, and evidence-backed health care profession across the U.S.",
+    badge:"Blog",badgeClass:"badge-blog",
+    link:"https://blog.caleeacu.com/2025/06/is-acupuncture-legal-and-legitimate.html",
+    googleLink:"https://www.bing.com/search?q=Is+Acupuncture+a+Legal+and+Legitimate+Medical+Practice",
+    tags:"acupuncture legal legitimate licensed regulated evidence healthcare profession"
+  },
+  {
+    id:"b2",type:"blog",
+    title:"What Is the New Technique for Acupuncture?",
+    meta:"CALee Blog · 2025",
+    desc:"Innovations that blend classical roots with neuroscience and fascia research.",
+    badge:"Blog",badgeClass:"badge-blog",
+    link:"https://blog.caleeacu.com/2025/06/what-is-new-technique-for-acupuncture.html",
+    googleLink:"https://www.bing.com/search?q=What+is+the+new+technique+for+acupuncture",
+    tags:"acupuncture new technique neuroscience fascia innovation classical"
+  },
+  {
+    id:"b3",type:"blog",
+    title:"What Do the Chinese Believe About Acupuncture?",
+    meta:"CALee Blog · 2025",
+    desc:"Traditional Chinese philosophy — balance, harmony, and energy flow guiding holistic health practices.",
+    badge:"Blog",badgeClass:"badge-blog",
+    link:"https://blog.caleeacu.com/2025/07/What-do-the-Chinese-believe-about-acupuncture.html",
+    googleLink:"https://www.bing.com/search?q=What+do+the+Chinese+believe+about+acupuncture",
+    tags:"chinese philosophy acupuncture balance harmony qi energy flow traditional"
+  },
+  {
+    id:"b4",type:"blog",
+    title:"What's the Difference Between Medical Acupuncture and Chinese Acupuncture?",
+    meta:"CALee Blog · 2025",
+    desc:"How philosophy, diagnosis, and goals shape two distinct approaches to acupuncture.",
+    badge:"Blog",badgeClass:"badge-blog",
+    link:"https://blog.caleeacu.com/2025/06/what-is-difference-between-medical.html",
+    googleLink:"https://www.bing.com/search?q=What+is+the+difference+between+medical+acupuncture+and+Chinese+acupuncture",
+    tags:"medical acupuncture chinese difference diagnosis philosophy approach"
+  },
+  {
+    id:"b5",type:"blog",
+    title:"What's the Difference Between Acupuncture and Chinese Acupuncture?",
+    meta:"CALee Blog · 2025",
+    desc:"How language shapes perception — and why it matters for patients choosing care.",
+    badge:"Blog",badgeClass:"badge-blog",
+    link:"https://blog.caleeacu.com/2025/06/whats-difference-between-acupuncture.html",
+    googleLink:"https://www.bing.com/search?q=What+is+the+difference+between+acupuncture+and+Chinese+acupuncture",
+    tags:"acupuncture chinese language perception patient choice"
+  },
+  {
+    id:"b6",type:"blog",
+    title:"What Are the Drawbacks of Acupuncture?",
+    meta:"CALee Blog · 2025",
+    desc:"A balanced view of risks and misconceptions — with clinical context.",
+    badge:"Blog",badgeClass:"badge-blog",
+    link:"https://blog.caleeacu.com/2025/07/what-are-drawbacks-of-acupuncture.html",
+    tags:"acupuncture drawbacks risks misconceptions safety side effects"
+  }
+];
+
+var TOPICS = [
+  // Section 1
+  {id:"t1a",type:"topic",section:"1 · What is Korean Medicine?",
+   title:"Korean Medicine vs. TCM — What Actually Diverged",
+   desc:"Historical and philosophical divergence between Korean and Chinese medicine traditions.",
+   refs:"SSRN §1.2 · Korean Medicine Ch.1",
+   tags:"korean medicine tcm chinese diverge history tradition"},
+  {id:"t1b",type:"topic",section:"1 · What is Korean Medicine?",
+   title:"K-Acupuncture — Four Pillars of the Tradition",
+   desc:"The four foundational pillars that define Korean acupuncture as a distinct clinical tradition.",
+   refs:"SSRN §1.1 · Korean Medicine Ch.1, 12, 13",
+   tags:"korean acupuncture pillars tradition history clinical"},
+  {id:"t1c",type:"topic",section:"1 · What is Korean Medicine?",
+   title:"The Philosophical Worldview Behind Acupuncture",
+   desc:"Classical cosmology, process thinking, and the ontology underlying needle-based medicine.",
+   refs:"Korean Medicine Ch.2",
+   tags:"philosophy worldview acupuncture cosmology process ontology"},
+  {id:"t1d",type:"topic",section:"1 · What is Korean Medicine?",
+   title:"Key Milestones: 1613 → 1894 → 1965 → 2019",
+   desc:"Four turning points that shaped the trajectory of Korean medicine from Dongui Bogam to modern legislation.",
+   refs:"Korean Medicine Ch.1",
+   tags:"history milestones dongui bogam 1613 1894 1965 2019 legislation"},
+  // Section 2
+  {id:"t2a",type:"topic",section:"2 · The Diagnostic System",
+   title:"Eight Principle Pattern Identification (八綱辨證)",
+   desc:"The foundational eight-parameter diagnostic grid: Yin/Yang, Interior/Exterior, Cold/Heat, Deficiency/Excess.",
+   refs:"SSRN §4 · Korean Medicine Ch.9",
+   tags:"eight principle pattern diagnosis yin yang interior exterior cold heat deficiency excess"},
+  {id:"t2b",type:"topic",section:"2 · The Diagnostic System",
+   title:"Sasang Constitutional Medicine — Four Types",
+   desc:"Lee Je-ma's 1894 system of four constitutions (Taeyang, Taeeum, Soyang, Soeum) as a clinical framework.",
+   refs:"SSRN §5.1.1 · Korean Medicine Ch.10",
+   tags:"sasang constitution four types taeyang taeeum soyang soeum lee jema"},
+  {id:"t2c",type:"topic",section:"2 · The Diagnostic System",
+   title:"Eight Constitution Medicine — Eight Types",
+   desc:"Do-won Kwon's 1965 refinement: eight constitutional types derived from relative organ strength.",
+   refs:"SSRN §5.1.2 · Korean Medicine Ch.10",
+   tags:"eight constitution medicine kwon do-won organ types individualized"},
+  {id:"t2d",type:"topic",section:"2 · The Diagnostic System",
+   title:"Pulse Diagnosis — Three Positions, Twelve Organs",
+   desc:"How radial pulse at three positions (cun, guan, chi) maps to twelve organ systems.",
+   refs:"SSRN §5.2 · Korean Medicine Ch.10–11",
+   tags:"pulse diagnosis positions organs cun guan chi radial twelve"},
+  // Section 3
+  {id:"t3a",type:"topic",section:"3 · Classical Foundations",
+   title:"I Ching — Change-Pattern Logic and Medicine",
+   desc:"How the Book of Changes (易經) informs temporal and relational thinking in clinical practice.",
+   refs:"Korean Medicine Ch.2",
+   tags:"i ching yijing change pattern logic medicine classical"},
+  {id:"t3b",type:"topic",section:"3 · Classical Foundations",
+   title:"Five Movements (五行) — Not 'Elements,' but Process",
+   desc:"Wu Xing reframed: not static elements but dynamic phase transitions governing physiological cycles.",
+   refs:"SSRN §3.2 · Korean Medicine Ch.4",
+   tags:"five elements movements wuxing process phases dynamic cycles"},
+  {id:"t3c",type:"topic",section:"3 · Classical Foundations",
+   title:"Nanjing (難經) — The Logic of Tonify and Sedate",
+   desc:"The Classic of Difficulties and its systematic tonification/sedation protocols underlying Korean needling.",
+   refs:"SSRN §3.2 · Korean Medicine Ch.4, 12",
+   tags:"nanjing classic difficulties tonify sedate protocol needling"},
+  {id:"t3d",type:"topic",section:"3 · Classical Foundations",
+   title:"Saam Acupuncture (사암침법) — 17th-Century Korean Method",
+   desc:"The Saam monk's synthesis of Five Phase theory with point-combination logic.",
+   refs:"Korean Medicine Ch.12",
+   tags:"saam acupuncture korean 17th century monk five phase point combination"},
+  {id:"t3e",type:"topic",section:"3 · Classical Foundations",
+   title:"Do Meridians Actually Exist?",
+   desc:"Reviewing anatomical, histological, and biophysical evidence for and against meridian structures.",
+   refs:"SSRN §3.4 · Korean Medicine Ch.7",
+   tags:"meridian exist evidence anatomy histology biophysics fascia"},
+  // Section 4
+  {id:"t4a",type:"topic",section:"4 · Medicine & Aging",
+   title:"Hypertension — When the Number Normalizes, What Remains?",
+   desc:"Classical reading of Gan-Yang rising vs. biomedical antihypertensive management.",
+   refs:"Classical Medicine Ch.1",
+   tags:"hypertension blood pressure aging gan yang classical geriatric"},
+  {id:"t4b",type:"topic",section:"4 · Medicine & Aging",
+   title:"Diabetes — Xiao Ke and the Regulatory Foundation",
+   desc:"Xiao Ke (wasting-thirst disorder) and what classical medicine identifies as the underlying dysregulation.",
+   refs:"Classical Medicine Ch.2",
+   tags:"diabetes xiao ke wasting thirst classical aging regulatory"},
+  {id:"t4c",type:"topic",section:"4 · Medicine & Aging",
+   title:"Dementia — What Is Accumulating vs. What Is Depleting",
+   desc:"Phlegm obstruction, kidney essence deficiency, and the dual-process classical model of cognitive decline.",
+   refs:"Classical Medicine Ch.5",
+   tags:"dementia phlegm kidney essence accumulation depletion cognitive aging"},
+  {id:"t4d",type:"topic",section:"4 · Medicine & Aging",
+   title:"Parkinson's, Tremor, Dizziness — Internal Wind (內風)",
+   desc:"Liver wind stirring internally: the classical pattern behind movement disorders and postural instability.",
+   refs:"Classical Medicine Ch.6",
+   tags:"parkinson tremor dizziness internal wind liver aging movement disorder"},
+  {id:"t4e",type:"topic",section:"4 · Medicine & Aging",
+   title:"Constipation in Older Adults — Six Patterns, Not One",
+   desc:"Why constipation in geriatric patients requires differentiation rather than a single intervention.",
+   refs:"Classical Medicine Ch.10",
+   tags:"constipation older adults six patterns geriatric differentiation aging"},
+  // Section 5
+  {id:"t5a",type:"topic",section:"5 · Science, Philosophy & Research",
+   title:"Systems Biology and Korean Medicine",
+   desc:"Network medicine, emergent properties, and how systems biology resonates with relational Korean diagnosis.",
+   refs:"SSRN §2.2 · Korean Medicine Ch.17",
+   tags:"systems biology network medicine emergent relational korean"},
+  {id:"t5b",type:"topic",section:"5 · Science, Philosophy & Research",
+   title:"Process Philosophy — Whitehead and Medicine",
+   desc:"Alfred North Whitehead's process ontology as a lens for understanding dynamic, relational medicine.",
+   refs:"SSRN §2.2 · Korean Medicine Ch.3",
+   tags:"process philosophy whitehead ontology dynamic relational medicine"},
+  {id:"t5c",type:"topic",section:"5 · Science, Philosophy & Research",
+   title:"Relativity Theory and the Non-Fixed Self",
+   desc:"Special relativity's observer-dependency and its parallel to the Non-Fixed Self framework.",
+   refs:"SSRN §2.2.3 · Korean Medicine Ch.3",
+   tags:"relativity theory non fixed self observer framework physics"},
+  {id:"t5d",type:"topic",section:"5 · Science, Philosophy & Research",
+   title:"Quantum Physics and Non-Self",
+   desc:"Wave-particle duality, entanglement, and their analogical resonance with classical non-self theory.",
+   refs:"SSRN §2.2.3 · Korean Medicine Ch.3",
+   tags:"quantum physics non self wave particle duality entanglement classical"},
+  {id:"t5e",type:"topic",section:"5 · Science, Philosophy & Research",
+   title:"Why Standard RCTs Misalign with Korean Medicine",
+   desc:"How individualized, relational, longitudinal treatment resists double-blind homogeneous protocols.",
+   refs:"SSRN §7.1 · Korean Medicine Ch.17–18",
+   tags:"rct randomized controlled trial korean medicine individualized limitation research methodology"}
+];
+
+// ── Research Map config ───────────────────────────────────────
+var SHEET_ID="1e7pPwW9FC3aTICG1GYJagYQfTALOtIzhAa0SWIga7kA";
+var MAIN_GID="0";
+var EXCL_SHEET="Excluded";
+var CAT={
+  "Relational Process":{key:"rp",abbr:"RP"},
+  "Constitutional Individuation":{key:"ci",abbr:"CI"},
+  "Non-Fixed Self":{key:"nfs",abbr:"NFS"},
+  "Multiple":{key:"mul",abbr:"M"}
+};
+var rmData=[],rmExcl=[];
+var rmState={tab:"classified",cat:"",ev:"",rel:"",sort:"date-desc"};
+
+// ── Utilities ─────────────────────────────────────────────────
+function esc(s){return String(s||"").replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function dv(s){var t=Date.parse(s);return isNaN(t)?0:t;}
+function pick(row,keys){var rk=Object.keys(row);for(var i=0;i<keys.length;i++){var k=keys[i].toLowerCase();var f=rk.find(function(x){return x&&x.trim().toLowerCase()===k;});if(f!==undefined){var v=row[f];return v!=null?String(v).trim():"";}}return "";}
+
+// Maps messy Framework Category text (e.g. "Constitutional Individuation (CI)",
+// "CI", "non fixed self") to the canonical category name used as a CAT key.
+// Falls back to the raw trimmed string if nothing matches (shows as "Other").
+function normalizeCategory(raw){
+  var s = String(raw||"").trim();
+  if(!s) return s;
+  var low = s.toLowerCase();
+  var rules = [
+    { canon:"Relational Process",            test:/relational\s*process|^rp\b/i },
+    { canon:"Constitutional Individuation",  test:/constitutional\s*individuation|^ci\b/i },
+    { canon:"Non-Fixed Self",                test:/non[\s-]*fixed\s*self|^nfs\b/i },
+    { canon:"Multiple",                      test:/^multiple\b|^m\b/i }
+  ];
+  for(var i=0;i<rules.length;i++){ if(rules[i].test.test(low)) return rules[i].canon; }
+  return s;
+}
+
+function normMain(r){return{no:pick(r,["No.","No"]),date:pick(r,["Date"]),title:pick(r,["Paper Title"]),authors:pick(r,["Authors & Year","Authors&Year"]),journal:pick(r,["Source/Journal"]),finding:pick(r,["Key Finding"]),category:normalizeCategory(pick(r,["Framework Category"])),evidence:pick(r,["Evidence Type"]),relevance:pick(r,["Clinical Relevance"]),note:pick(r,["Classification Note"]),link:pick(r,["Link"])};}
+function normExcl(r){return{no:pick(r,["No.","No"]),date:pick(r,["Date"]),title:pick(r,["Paper Title"]),authors:pick(r,["Authors & Year"]),journal:pick(r,["Source/Journal"]),finding:pick(r,["Key Finding"]),reason:pick(r,["Why Not Classified"]),link:pick(r,["Link"])};}
+function fetchCsv(url){return new Promise(function(res,rej){Papa.parse(url,{download:true,header:true,skipEmptyLines:true,complete:function(r){res(r.data||[]);},error:rej});});}
+function csvUrl(o){var b="https://docs.google.com/spreadsheets/d/"+SHEET_ID+"/gviz/tq?tqx=out:csv";return o.gid!==undefined?b+"&gid="+o.gid:b+"&sheet="+encodeURIComponent(o.sheet);}
+function relDots(r){return{High:3,Medium:2,Low:1}[r]||0;}
+
+// ── Card renderers ────────────────────────────────────────────
+function lcCardHtml(item){
+  var titleHtml=item.link?'<a href="'+esc(item.link)+'" target="_blank" rel="noopener">'+esc(item.title)+"</a>":esc(item.title);
+  var refsHtml=item.refs?'<div class="card-refs">'+esc(item.refs)+"</div>":"";
+  var googleHtml=item.googleLink?'<span class="card-google-link"><a href="'+esc(item.googleLink)+'" target="_blank" rel="noopener">Bing Search</a></span>':"";
+
+  return'<article class="card" data-type="'+esc(item.type)+'" data-id="'+esc(item.id)+'">'
+    +'<div class="card-top"><span class="badge '+esc(item.badgeClass||"badge-topic")+'">'+esc(item.badge||item.section||item.type)+"</span>"+googleHtml+"</div>"
+    +'<h3>'+titleHtml+"</h3>"
+    +(item.meta?'<p class="card-meta">'+esc(item.meta)+"</p>":"")
+    +(item.desc?'<p class="card-desc">'+esc(item.desc)+"</p>":"")
+    +refsHtml
+    +"</article>";
+}
+
+function rmCardHtml(r){
+  var m=CAT[r.category]||{key:"other",abbr:"?"};
+  var dots=relDots(r.relevance);
+  var relStr=dots?"●".repeat(dots)+"○".repeat(3-dots)+" "+esc(r.relevance):"";
+  var titleHtml=r.link?'<a href="'+esc(r.link)+'" target="_blank" rel="noopener">'+esc(r.title||"Untitled")+"</a>":esc(r.title||"Untitled");
+  var meta=[r.authors,r.journal,r.date].filter(Boolean).join(" · ");
+  var noteHtml=r.note?'<details class="card-note"><summary>Classification rationale</summary><p>'+esc(r.note)+"</p></details>":"";
+  var foot="No.&nbsp;"+esc(r.no||"—")+(relStr?" · "+relStr:"")+(r.evidence?" · "+esc(r.evidence):"");
+  return'<article class="card" data-cat="'+m.key+'" data-type="rmap">'
+    +'<div class="card-top"><span class="badge badge-'+m.key+'">'+esc(m.abbr)+" — "+esc(r.category)+"</span></div>"
+    +'<h3>'+titleHtml+"</h3>"
+    +'<p class="card-meta">'+esc(meta)+"</p>"
+    +(r.finding?'<p class="card-desc">'+esc(r.finding)+"</p>":"")
+    +noteHtml
+    +'<p class="card-foot">'+foot+"</p>"
+    +"</article>";
+}
+
+function rmExclCardHtml(r){
+  var titleHtml=r.link?'<a href="'+esc(r.link)+'" target="_blank" rel="noopener">'+esc(r.title||"Untitled")+"</a>":esc(r.title||"Untitled");
+  var meta=[r.authors,r.journal,r.date].filter(Boolean).join(" · ");
+  return'<article class="card" data-cat="excluded" data-type="rmap">'
+    +'<div class="card-top"><span class="badge">Excluded</span></div>'
+    +'<h3>'+titleHtml+"</h3>"
+    +'<p class="card-meta">'+esc(meta)+"</p>"
+    +(r.finding?'<p class="card-desc">'+esc(r.finding)+"</p>":"")
+    +(r.reason?'<p class="excluded-reason"><strong>Why excluded — </strong>'+esc(r.reason)+"</p>":"")
+    +"</article>";
+}
+
+// ── State ─────────────────────────────────────────────────────
+var activeSection="all";
+var globalQ="";
+
+function sectionVisible(sec){return activeSection==="all"||activeSection===sec;}
+
+function matchesGlobal(text){
+  if(!globalQ)return true;
+  return text.toLowerCase().indexOf(globalQ.toLowerCase())!==-1;
+}
+
+function isIdle(){return activeSection==="all"&&!globalQ;}
+
+function showIdleState(){
+  var idle=isIdle();
+  document.getElementById("idle-msg").classList.toggle("hidden",!idle);
+  if(idle){["sec-pub","sec-blog","sec-topic","sec-rmap"].forEach(function(id){document.getElementById(id).classList.add("hidden");});}
+  return idle;
+}
+
+// ── Render LC static ─────────────────────────────────────────
+function renderStatic(){
+  if(showIdleState()) return;
+  // publications
+  var pubs=PUBLICATIONS.filter(function(i){return matchesGlobal(i.title+" "+i.desc+" "+i.tags);});
+  document.getElementById("grid-pub").innerHTML=pubs.map(lcCardHtml).join("")||"";
+  var secPub=document.getElementById("sec-pub");
+  secPub.classList.toggle("hidden",!sectionVisible("pub")||pubs.length===0);
+
+  // blog
+  var blogs=BLOG_POSTS.filter(function(i){return matchesGlobal(i.title+" "+i.desc+" "+i.tags);});
+  document.getElementById("grid-blog").innerHTML=blogs.map(lcCardHtml).join("");
+  var secBlog=document.getElementById("sec-blog");
+  secBlog.classList.toggle("hidden",!sectionVisible("blog")||blogs.length===0);
+
+  // topics — group by section
+  var topics=TOPICS.filter(function(i){return matchesGlobal(i.title+" "+i.desc+" "+i.tags+" "+i.section);});
+  if(!sectionVisible("topic")||topics.length===0){
+    document.getElementById("sec-topic").classList.add("hidden");
+  } else {
+    document.getElementById("sec-topic").classList.remove("hidden");
+    // group
+    var groups={};
+    topics.forEach(function(t){(groups[t.section]=groups[t.section]||[]).push(t);});
+    var html="";
+    Object.keys(groups).forEach(function(sec){
+      html+='<div style="grid-column:1/-1;"><div class="section-label" style="margin-top:10px;margin-bottom:8px;">'+esc(sec)+"</div></div>";
+      html+=groups[sec].map(function(t){
+        return'<article class="card" data-type="topic" data-id="'+esc(t.id)+'">'
+          +'<div class="card-top"><span class="badge badge-topic">Topic Guide</span></div>'
+          +'<h3>'+esc(t.title)+"</h3>"
+          +(t.desc?'<p class="card-desc">'+esc(t.desc)+"</p>":"")
+          +(t.refs?'<div class="card-refs">'+esc(t.refs)+"</div>":"")
+          +"</article>";
+      }).join("");
+    });
+    document.getElementById("grid-topic").innerHTML=html;
+  }
+
+  // tab counts
+  document.getElementById("tc-pub").textContent="("+pubs.length+")";
+  document.getElementById("tc-blog").textContent="("+blogs.length+")";
+  document.getElementById("tc-topic").textContent="("+topics.length+")";
+}
+
+// ── Render Research Map ───────────────────────────────────────
+function isRmapIdle(){return!globalQ&&!rmState.cat&&!rmState.ev&&!rmState.rel;}
+
+function renderRmap(){
+  var secRmap=document.getElementById("sec-rmap");
+  if(isIdle()||!sectionVisible("rmap")){secRmap.classList.add("hidden");return;}
+  secRmap.classList.remove("hidden");
+
+  // show idle prompt inside rmap when no filter/search active
+  var rmIdleMsg=document.getElementById("rmIdleMsg");
+  if(isRmapIdle()&&rmState.tab==="classified"){
+    rmIdleMsg.classList.remove("hidden");
+    document.getElementById("grid-rmap").innerHTML="";
+    document.getElementById("rmEmpty").classList.add("hidden");
+    return;
+  }
+  rmIdleMsg.classList.add("hidden");
+
+  if(rmState.tab==="classified"){
+    var rows=rmData.slice();
+    if(rmState.cat) rows=rows.filter(function(r){return r.category===rmState.cat;});
+    if(rmState.ev)  rows=rows.filter(function(r){return r.evidence===rmState.ev;});
+    if(rmState.rel) rows=rows.filter(function(r){return r.relevance===rmState.rel;});
+    if(globalQ){var q=globalQ.toLowerCase();rows=rows.filter(function(r){return(r.title+" "+r.authors+" "+r.finding+" "+r.note).toLowerCase().indexOf(q)!==-1;});}
+    if(rmState.sort==="no-asc") rows.sort(function(a,b){return(parseFloat(a.no)||0)-(parseFloat(b.no)||0);});
+    else if(rmState.sort==="relevance-desc") rows.sort(function(a,b){return relDots(b.relevance)-relDots(a.relevance);});
+    else rows.sort(function(a,b){return dv(b.date)-dv(a.date);});
+    var rmEmpty=document.getElementById("rmEmpty");
+    if(!rows.length){
+      document.getElementById("grid-rmap").innerHTML="";
+      rmEmpty.classList.remove("hidden");
+      rmEmpty.textContent=rmData.length?"No studies match the current filters.":"No studies classified yet.";
+    } else {
+      rmEmpty.classList.add("hidden");
+      document.getElementById("grid-rmap").innerHTML=rows.map(rmCardHtml).join("");
+    }
+  } else {
+    rmIdleMsg.classList.add("hidden");
+    var er=rmExcl.slice();
+    if(globalQ){var q2=globalQ.toLowerCase();er=er.filter(function(r){return(r.title+" "+r.authors+" "+r.finding+" "+r.reason).toLowerCase().indexOf(q2)!==-1;});}
+    er.sort(function(a,b){return dv(b.date)-dv(a.date);});
+    var rmEmpty2=document.getElementById("rmEmpty");
+    if(!er.length){
+      document.getElementById("grid-rmap").innerHTML="";
+      rmEmpty2.classList.remove("hidden");
+      rmEmpty2.textContent="No excluded studies recorded yet.";
+    } else {
+      rmEmpty2.classList.add("hidden");
+      document.getElementById("grid-rmap").innerHTML=er.map(rmExclCardHtml).join("");
+    }
+  }
+}
+
+function renderAll(){
+  renderStatic();
+  renderRmap();
+  // global count
+  var visible=document.querySelectorAll(".card:not(.hidden)").length;
+  var rmCount=document.getElementById("grid-rmap").querySelectorAll(".card").length;
+  var lcCount=document.querySelectorAll("#grid-pub .card, #grid-blog .card, #grid-topic .card").length;
+  if(globalQ){
+    document.getElementById("searchCount").textContent=(lcCount+rmCount)+" result"+(lcCount+rmCount===1?"":"s");
+  } else {
+    document.getElementById("searchCount").textContent="";
+  }
+  document.getElementById("tc-rmap").textContent="("+rmData.length+")";
+  document.getElementById("tc-all").textContent="";
+}
+
+// ── Tabs & Controls ───────────────────────────────────────────
+function setSection(sec){
+  activeSection=sec;
+  document.querySelectorAll(".tab-bar .tab").forEach(function(btn){
+    var active=btn.dataset.section===sec;
+    btn.classList.toggle("active",active);
+    btn.setAttribute("aria-selected",active);
+  });
+  renderAll();
+}
+
+function buildRmPills(){
+  var counts={};Object.keys(CAT).forEach(function(k){counts[k]=0;});
+  rmData.forEach(function(r){if(counts[r.category]!==undefined)counts[r.category]++;});
+  var pg=document.getElementById("rmPills");
+  pg.innerHTML=Object.keys(CAT).map(function(name){
+    var m=CAT[name];
+    return'<button class="fw-pill fw-'+m.key+'" data-cat="'+esc(name)+'" aria-pressed="false">'
+      +'<span class="abbr">'+m.abbr+'</span><span class="cnt">'+counts[name]+'</span></button>';
+  }).join("");
+  pg.querySelectorAll(".fw-pill").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var pressed=btn.getAttribute("aria-pressed")==="true";
+      pg.querySelectorAll(".fw-pill").forEach(function(b){b.setAttribute("aria-pressed","false");});
+      rmState.cat=pressed?"":btn.dataset.cat;
+      if(!pressed)btn.setAttribute("aria-pressed","true");
+      renderRmap();
+    });
+  });
+  var dates=rmData.map(function(r){return dv(r.date);}).filter(Boolean);
+  var meta=rmData.length+" classified · "+rmExcl.length+" excluded";
+  if(dates.length){var d=new Date(Math.max.apply(null,dates));meta+=" · Last updated "+d.toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"});}
+  document.getElementById("rmMeta").textContent=meta;
+  document.getElementById("rmClassCount").textContent=" ("+rmData.length+")";
+  document.getElementById("rmExclCount").textContent=" ("+rmExcl.length+")";
+}
+
+function wireControls(){
+  document.querySelectorAll(".tab-bar .tab").forEach(function(btn){
+    btn.addEventListener("click",function(){setSection(btn.dataset.section);});
+  });
+  var t;
+  document.getElementById("globalSearch").addEventListener("input",function(e){
+    clearTimeout(t);var v=e.target.value;
+    t=setTimeout(function(){globalQ=v;renderAll();},150);
+  });
+  document.getElementById("rmEvidence").addEventListener("change",function(e){rmState.ev=e.target.value;renderRmap();});
+  document.getElementById("rmRelevance").addEventListener("change",function(e){rmState.rel=e.target.value;renderRmap();});
+  document.getElementById("rmSort").addEventListener("change",function(e){rmState.sort=e.target.value;renderRmap();});
+  document.querySelectorAll(".rm-tab").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      rmState.tab=btn.dataset.rmtab;
+      document.querySelectorAll(".rm-tab").forEach(function(b){b.classList.remove("active");});
+      btn.classList.add("active");
+      var isClass=rmState.tab==="classified";
+      document.getElementById("rmSubFilter").style.display=isClass?"flex":"none";
+      document.querySelectorAll("#rmPills .fw-pill").forEach(function(b){b.setAttribute("aria-pressed","false");});
+      rmState.cat="";
+      renderRmap();
+    });
+  });
+}
+
+// ── Init ──────────────────────────────────────────────────────
+async function init(){
+  wireControls();
+  // hint link clicks
+  document.querySelectorAll(".hint-link").forEach(function(a){
+    a.addEventListener("click",function(e){
+      e.preventDefault();
+      var q=a.dataset.q;
+      document.getElementById("globalSearch").value=q;
+      globalQ=q;
+      renderAll();
+    });
+  });
+  // render static first immediately
+  renderAll();
+
+  // load research map data
+  var mainFailed=false;
+  try{var raw=await fetchCsv(csvUrl({gid:MAIN_GID}));rmData=raw.map(normMain).filter(function(r){return r.title;});}
+  catch(e){mainFailed=true;}
+  try{var re=await fetchCsv(csvUrl({sheet:EXCL_SHEET}));rmExcl=re.map(normExcl).filter(function(r){return r.title;});}
+  catch(e){rmExcl=[];}
+
+  document.getElementById("rmLoading").classList.add("hidden");
+
+  if(mainFailed){
+    var err=document.getElementById("rmError");
+    err.classList.remove("hidden");
+    err.innerHTML='Could not load research data. Ensure the Google Sheet is shared as <code>Anyone with the link — Viewer</code> and this page is served over <code>https://</code>.';
+  } else {
+    buildRmPills();
+    renderAll();
+  }
+}
+
+init();
+</script>
+<script src="/assets/site.js"></script>
 </body>
 </html>

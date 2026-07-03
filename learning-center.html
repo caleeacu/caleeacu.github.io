@@ -550,7 +550,7 @@ function lcCardHtml(item){
   var searchLinks=[];
   if(item.googleLink)searchLinks.push('<a href="'+esc(item.googleLink)+'" target="_blank" rel="noopener">Google</a>');
   if(item.bingLink)searchLinks.push('<a href="'+esc(item.bingLink)+'" target="_blank" rel="noopener">Bing</a>');
-  var googleHtml=searchLinks.length?'<span class="card-google-link">Search: '+searchLinks.join(" · ")+"</span>":"";
+  var googleHtml=searchLinks.length?'<span class="card-google-link">Search: '+searchLinks.join(" ")+"</span>":"";
 
   return'<article class="card" data-type="'+esc(item.type)+'" data-id="'+esc(item.id)+'">'
     +'<div class="card-top"><span class="badge '+esc(item.badgeClass||"badge-topic")+'">'+esc(item.badge||item.section||item.type)+"</span>"+googleHtml+"</div>"

@@ -11,6 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico"/>
+<link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg"/>
 <link rel="stylesheet" href="/assets/style.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <style>
@@ -76,7 +78,9 @@ main{padding:22px 0 72px;}
   background:var(--surface);border:1.5px solid var(--rule);
   border-left:4px solid var(--rule);border-radius:var(--radius);
   padding:16px 18px 14px;
+  transition:box-shadow .15s,transform .12s;
 }
+.card:hover{box-shadow:0 3px 14px rgba(26,18,8,.07);transform:translateY(-1px);}
 .card[data-type="publication"]{border-left-color:rgb(var(--pub-rgb));}
 .card[data-type="blog"]{border-left-color:rgb(var(--blog-rgb));}
 .card[data-type="topic"]{border-left-color:rgb(var(--topic-rgb));}
@@ -152,8 +156,9 @@ main{padding:22px 0 72px;}
 @media(prefers-reduced-motion:reduce){*{transition:none !important;}}
 
   /* ── Google overview link ── */
-  .card-google-link a{font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;padding:.22em .65em;border-radius:4px;border:1.5px solid rgba(66,133,244,.4);background:rgba(66,133,244,.07);color:#4285f4;text-decoration:none;}
-  .card-google-link a:hover{background:rgba(66,133,244,.15);}
+  .card-google-link{font-family:var(--mono);font-size:.64rem;color:var(--soft);letter-spacing:.02em;display:inline-flex;gap:5px;align-items:center;margin-left:auto;}
+  .card-google-link a{font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;padding:.22em .6em;border-radius:4px;border:1.5px solid var(--rule);background:var(--surface);color:var(--mid);text-decoration:none;transition:border-color .12s,color .12s;}
+  .card-google-link a:hover{border-color:var(--ink);color:var(--ink);}
 
   /* ── Idle state ── */
   .idle-msg{padding:36px 0 20px;border-bottom:1px solid var(--rule);}
@@ -270,7 +275,8 @@ var PUBLICATIONS = [
     desc:"Introduces three clinical frameworks — RP, CI, and NFS — for understanding Korean acupuncture beyond biomedical categories. Medical Epistemology · Acupuncture Research · East Asian Medical Theory.",
     badge:"SSRN 2026",badgeClass:"badge-pub",
     link:"https://ssrn.com/abstract=6405558",
-    googleLink:"https://www.bing.com/search?q=A+Conceptual+Framework+for+Diagnostic+Reasoning+in+Korean+Acupuncture+Relational+Process+Constitutional+Individuation+Non-Fixed+Self",
+    googleLink:"https://www.google.com/search?q=A+Conceptual+Framework+for+Diagnostic+Reasoning+in+Korean+Acupuncture+Relational+Process+Constitutional+Individuation+Non-Fixed+Self",
+    bingLink:"https://www.bing.com/search?q=A+Conceptual+Framework+for+Diagnostic+Reasoning+in+Korean+Acupuncture+Relational+Process+Constitutional+Individuation+Non-Fixed+Self",
     tags:"ssrn framework relational process constitutional individuation non-fixed self epistemology research"
   },
   {
@@ -280,7 +286,8 @@ var PUBLICATIONS = [
     desc:"A relational approach to acupuncture, constitutional medicine, and systems healing. 19 chapters + appendices covering history, diagnosis, classical foundations, and clinical application.",
     badge:"KDP 2026",badgeClass:"badge-pub",
     link:"https://www.amazon.com/dp/B0GSXDDLGK",
-    googleLink:"https://www.bing.com/search?q=Korean+Medicine+Theoretical+Foundations+Diagnostic+Reasoning+Clinical+Practice+Hoon+Lee",
+    googleLink:"https://www.google.com/search?q=Korean+Medicine+Theoretical+Foundations+Diagnostic+Reasoning+Clinical+Practice+Hoon+Lee",
+    bingLink:"https://www.bing.com/search?q=Korean+Medicine+Theoretical+Foundations+Diagnostic+Reasoning+Clinical+Practice+Hoon+Lee",
     tags:"korean medicine book foundations diagnostic reasoning clinical practice constitutional sasang eight constitution"
   },
   {
@@ -290,7 +297,8 @@ var PUBLICATIONS = [
     desc:"11 geriatric conditions examined through both biomedical and classical lenses: Hypertension, Diabetes, Dementia, Parkinson's, COPD, Constipation, and 5 more.",
     badge:"KDP 2026",badgeClass:"badge-pub",
     link:"https://www.amazon.com/dp/B0GX374FK9",
-    googleLink:"https://www.bing.com/search?q=Classical+Medicine+and+Modern+Disease+Two+Medical+Traditions+Reading+the+Aging+Body+Hoon+Lee",
+    googleLink:"https://www.google.com/search?q=Classical+Medicine+and+Modern+Disease+Two+Medical+Traditions+Reading+the+Aging+Body+Hoon+Lee",
+    bingLink:"https://www.bing.com/search?q=Classical+Medicine+and+Modern+Disease+Two+Medical+Traditions+Reading+the+Aging+Body+Hoon+Lee",
     tags:"classical medicine modern disease aging geriatric hypertension diabetes dementia parkinsons copd constipation"
   }
 ];
@@ -312,7 +320,8 @@ var BLOG_POSTS = [
     desc:"Why acupuncture is a licensed, regulated, and evidence-backed health care profession across the U.S.",
     badge:"Blog",badgeClass:"badge-blog",
     link:"https://blog.caleeacu.com/2025/06/is-acupuncture-legal-and-legitimate.html",
-    googleLink:"https://www.bing.com/search?q=Is+Acupuncture+a+Legal+and+Legitimate+Medical+Practice",
+    googleLink:"https://www.google.com/search?q=Is+Acupuncture+a+Legal+and+Legitimate+Medical+Practice",
+    bingLink:"https://www.bing.com/search?q=Is+Acupuncture+a+Legal+and+Legitimate+Medical+Practice",
     tags:"acupuncture legal legitimate licensed regulated evidence healthcare profession"
   },
   {
@@ -322,7 +331,8 @@ var BLOG_POSTS = [
     desc:"Innovations that blend classical roots with neuroscience and fascia research.",
     badge:"Blog",badgeClass:"badge-blog",
     link:"https://blog.caleeacu.com/2025/06/what-is-new-technique-for-acupuncture.html",
-    googleLink:"https://www.bing.com/search?q=What+is+the+new+technique+for+acupuncture",
+    googleLink:"https://www.google.com/search?q=What+is+the+new+technique+for+acupuncture",
+    bingLink:"https://www.bing.com/search?q=What+is+the+new+technique+for+acupuncture",
     tags:"acupuncture new technique neuroscience fascia innovation classical"
   },
   {
@@ -332,7 +342,8 @@ var BLOG_POSTS = [
     desc:"Traditional Chinese philosophy — balance, harmony, and energy flow guiding holistic health practices.",
     badge:"Blog",badgeClass:"badge-blog",
     link:"https://blog.caleeacu.com/2025/07/What-do-the-Chinese-believe-about-acupuncture.html",
-    googleLink:"https://www.bing.com/search?q=What+do+the+Chinese+believe+about+acupuncture",
+    googleLink:"https://www.google.com/search?q=What+do+the+Chinese+believe+about+acupuncture",
+    bingLink:"https://www.bing.com/search?q=What+do+the+Chinese+believe+about+acupuncture",
     tags:"chinese philosophy acupuncture balance harmony qi energy flow traditional"
   },
   {
@@ -342,7 +353,8 @@ var BLOG_POSTS = [
     desc:"How philosophy, diagnosis, and goals shape two distinct approaches to acupuncture.",
     badge:"Blog",badgeClass:"badge-blog",
     link:"https://blog.caleeacu.com/2025/06/what-is-difference-between-medical.html",
-    googleLink:"https://www.bing.com/search?q=What+is+the+difference+between+medical+acupuncture+and+Chinese+acupuncture",
+    googleLink:"https://www.google.com/search?q=What+is+the+difference+between+medical+acupuncture+and+Chinese+acupuncture",
+    bingLink:"https://www.bing.com/search?q=What+is+the+difference+between+medical+acupuncture+and+Chinese+acupuncture",
     tags:"medical acupuncture chinese difference diagnosis philosophy approach"
   },
   {
@@ -352,7 +364,8 @@ var BLOG_POSTS = [
     desc:"How language shapes perception — and why it matters for patients choosing care.",
     badge:"Blog",badgeClass:"badge-blog",
     link:"https://blog.caleeacu.com/2025/06/whats-difference-between-acupuncture.html",
-    googleLink:"https://www.bing.com/search?q=What+is+the+difference+between+acupuncture+and+Chinese+acupuncture",
+    googleLink:"https://www.google.com/search?q=What+is+the+difference+between+acupuncture+and+Chinese+acupuncture",
+    bingLink:"https://www.bing.com/search?q=What+is+the+difference+between+acupuncture+and+Chinese+acupuncture",
     tags:"acupuncture chinese language perception patient choice"
   },
   {
@@ -534,7 +547,10 @@ function relDots(r){return{High:3,Medium:2,Low:1}[r]||0;}
 function lcCardHtml(item){
   var titleHtml=item.link?'<a href="'+esc(item.link)+'" target="_blank" rel="noopener">'+esc(item.title)+"</a>":esc(item.title);
   var refsHtml=item.refs?'<div class="card-refs">'+esc(item.refs)+"</div>":"";
-  var googleHtml=item.googleLink?'<span class="card-google-link"><a href="'+esc(item.googleLink)+'" target="_blank" rel="noopener">Bing Search</a></span>':"";
+  var searchLinks=[];
+  if(item.googleLink)searchLinks.push('<a href="'+esc(item.googleLink)+'" target="_blank" rel="noopener">Google</a>');
+  if(item.bingLink)searchLinks.push('<a href="'+esc(item.bingLink)+'" target="_blank" rel="noopener">Bing</a>');
+  var googleHtml=searchLinks.length?'<span class="card-google-link">Search: '+searchLinks.join(" · ")+"</span>":"";
 
   return'<article class="card" data-type="'+esc(item.type)+'" data-id="'+esc(item.id)+'">'
     +'<div class="card-top"><span class="badge '+esc(item.badgeClass||"badge-topic")+'">'+esc(item.badge||item.section||item.type)+"</span>"+googleHtml+"</div>"

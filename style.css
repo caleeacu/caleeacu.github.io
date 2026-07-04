@@ -146,3 +146,16 @@ button{cursor:pointer;font-family:var(--sans);}
   background:rgba(45,92,70,.1);color:var(--jade);border:1px solid rgba(45,92,70,.25);
   margin-bottom:10px;
 }
+
+/* ── Footer social links ── */
+.footer-social{
+  display:flex;gap:14px;margin:18px 0 6px;
+  padding-top:16px;border-top:1px solid rgba(255,255,255,.08);
+}
+.footer-social a{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;
+  color:rgba(255,255,255,.45);text-decoration:none;
+  padding:4px 10px;border:1px solid rgba(255,255,255,.12);border-radius:5px;
+  transition:color .12s,border-color .12s;
+}
+.footer-social a:hover{color:#fff;border-color:rgba(255,255,255,.4);text-decoration:none;}

@@ -1,6 +1,6 @@
 /* site.js — research.caleeacu.com */
 (function(){
-  var LOGO = 'https://img1.wsimg.com/isteam/ip/939e6851-368e-49ee-b58e-05dc513bc5de/noBgWhite.png/:/rs=h:104,cg:true,m/qt=q:95';
+  var LOGO = '/assets/images/logo.svg';
 
   var PAGES = [
     {label:'Home',           href:'/'},
@@ -60,6 +60,11 @@
       +'<a href="https://www.amazon.com/dp/B0GX374FK9" target="_blank" rel="noopener">Classical Medicine and Modern Disease</a><br>'
       +'<p style="margin-top:10px;"><a href="mailto:caleeacu@gmail.com">caleeacu@gmail.com</a></p>'
       +'</div>'
+      +'</div>'
+      +'<div class="footer-social">'
+      +'<a href="https://www.facebook.com/620704767792748" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>'
+      +'<a href="https://www.instagram.com/caleeacu.com_" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>'
+      +'<a href="https://www.linkedin.com/in/calee-acupuncture" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>'
       +'</div>'
       +'<div class="footer-bottom">'
       +'<span>© '+new Date().getFullYear()+' CALee Acupuncture — Hoon Lee, L.Ac., DAOM(c)</span>'

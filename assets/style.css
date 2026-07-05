@@ -146,3 +146,12 @@ button{cursor:pointer;font-family:var(--sans);}
   background:rgba(45,92,70,.1);color:var(--jade);border:1px solid rgba(45,92,70,.25);
   margin-bottom:10px;
 }
+
+/* ── footer social icons ── */
+.footer-social{display:flex;gap:12px;margin-top:14px;}
+.footer-social a{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border:1px solid rgba(255,255,255,.18);border-radius:50%;
+  color:rgba(255,255,255,.55);transition:all .25s;
+}
+.footer-social a:hover{border-color:#8DBFA0;color:#fff;transform:translateY(-2px);text-decoration:none;}

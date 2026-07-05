@@ -71,7 +71,7 @@
       +'</div>'
       +'<div class="footer-bottom">'
       +'<span>© '+new Date().getFullYear()+' CALee Acupuncture — Hoon Lee, L.Ac., DAOM(c)</span>'
-      +'<span><a href="https://caleeacu.com" style="color:rgba(255,255,255,.3);">caleeacu.com</a></span>'
+      +'<span><a href="https://caleeacu.com/privacy.html" style="color:rgba(255,255,255,.3);">Privacy Policy</a> &middot; <a href="https://caleeacu.com" style="color:rgba(255,255,255,.3);">caleeacu.com</a></span>'
       +'</div>'
       +'</div>'
       +'</footer>';

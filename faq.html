@@ -74,6 +74,7 @@ a:hover{text-decoration:underline;}
   gtag('js', new Date());
   gtag('config', 'G-40LK5S10Z3');
 </script>
+<!-- BUILD:FAQ-SCHEMA:START --><!-- BUILD:FAQ-SCHEMA:END -->
 </head>
 <body>
 <div class="wrap">
@@ -92,12 +93,12 @@ a:hover{text-decoration:underline;}
 <div class="layout wrap">
   <nav class="sidebar">
     <div class="sidebar-title">Categories</div>
-    <div class="sidebar-nav" id="sidebarNav"></div>
+    <div class="sidebar-nav" id="sidebarNav"><!-- BUILD:FAQ-NAV:START --><!-- BUILD:FAQ-NAV:END --></div>
   </nav>
   <main class="main">
     <p class="state-msg" id="loadingMsg">Loading questions…</p>
     <p class="state-msg state-msg--error hidden" id="errorMsg"></p>
-    <div id="faqMain"></div>
+    <div id="faqMain"><!-- BUILD:FAQ-ITEMS:START --><!-- BUILD:FAQ-ITEMS:END --></div>
   </main>
 </div>
 
@@ -145,11 +146,6 @@ function makeItem(item){
   d.dataset.q=(item.q+" "+item.a).toLowerCase();
   d.innerHTML='<button class="faq-q" aria-expanded="false"><span>'+esc(item.q)+'</span><span class="faq-icon">+</span></button>'
     +'<div class="faq-a"><div class="faq-a-inner">'+esc(item.a)+'</div></div>';
-  d.querySelector(".faq-q").addEventListener("click",function(){
-    var open=this.getAttribute("aria-expanded")==="true";
-    this.setAttribute("aria-expanded",open?"false":"true");
-    d.querySelector(".faq-a").classList.toggle("open",!open);
-  });
   return d;
 }
 
@@ -190,6 +186,19 @@ function render(data){
     main.appendChild(block);
   });
 
+  bindInteractions();
+}
+
+// ── Interactions (정적/동적 공용) ──────────────────────────────
+function bindInteractions(){
+  // Accordion (event delegation — works for both static and fetched items)
+  document.getElementById("faqMain").addEventListener("click",function(ev){
+    var btn=ev.target.closest(".faq-q"); if(!btn) return;
+    var open=btn.getAttribute("aria-expanded")==="true";
+    btn.setAttribute("aria-expanded",open?"false":"true");
+    btn.parentNode.querySelector(".faq-a").classList.toggle("open",!open);
+  });
+
   // Sidebar scroll highlight
   var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
@@ -222,6 +231,12 @@ function render(data){
 }
 
 // ── Init ───────────────────────────────────────────────────────
+// 빌드 스크립트가 시트 내용을 정적 HTML로 구워두면 fetch 없이 즉시 표시.
+// (스키마는 head에 정적 삽입됨) 정적 콘텐츠가 없으면 기존 방식으로 시트에서 로드.
+if(document.querySelector("#faqMain .faq-item")){
+  document.getElementById("loadingMsg").classList.add("hidden");
+  bindInteractions();
+} else {
 Papa.parse(csvUrl(),{
   download:true, header:true, skipEmptyLines:true,
   complete:function(results){
@@ -241,6 +256,7 @@ Papa.parse(csvUrl(),{
     err.innerHTML='Could not load FAQ data. Ensure the Google Sheet is shared as <b>Anyone with the link — Viewer</b>.';
   }
 });
+}
 </script>
 <script src="/assets/site.js"></script>
 </body>

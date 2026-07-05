@@ -1,1 +1,46 @@
+name: Build content from Google Sheets
 
+on:
+  # 매일 오후 3시 (UTC) = 캘리포니아 오전 7~8시에 자동 실행
+  schedule:
+    - cron: "0 15 * * *"
+  # Actions 탭에서 "Run workflow" 버튼으로 수동 실행 가능
+  workflow_dispatch:
+  # HTML/스크립트가 바뀌어 푸시될 때도 한 번 실행
+  push:
+    paths:
+      - "scripts/build_static.py"
+      - "faq.html"
+      - "learning-center.html"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-content
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build static content from sheets
+        run: python3 scripts/build_static.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "content-bot"
+          git config user.email "actions@github.com"
+          if ! git diff --quiet; then
+            git add faq.html learning-center.html
+            git commit -m "content: sync from Google Sheets ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "변경 사항 없음 — 커밋 생략"
+          fi

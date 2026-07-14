@@ -273,6 +273,7 @@ main{padding:22px 0 72px;}
 
 </footer>
 
+<!-- BUILD:RM-DATA:START --><!-- BUILD:RM-DATA:END -->
 <script>
 // ── Static content data ───────────────────────────────────────
 var PUBLICATIONS = [
@@ -817,6 +818,20 @@ async function init(){
   });
   // render static first immediately
   renderAll();
+
+  // 빌드된 정적 데이터가 있으면 시트 fetch 생략
+  var staticEl=document.getElementById("rm-static-data");
+  if(staticEl){
+    try{
+      var sd=JSON.parse(staticEl.textContent);
+      rmData=(sd.main||[]).map(normMain).filter(function(r){return r.title;});
+      rmExcl=(sd.excluded||[]).map(normExcl).filter(function(r){return r.title;});
+      document.getElementById("rmLoading").classList.add("hidden");
+      buildRmPills();
+      renderAll();
+      return;
+    }catch(e){/* 파싱 실패 시 fetch로 폴백 */}
+  }
 
   // load research map data
   var mainFailed=false;

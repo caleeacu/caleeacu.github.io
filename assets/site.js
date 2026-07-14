@@ -59,7 +59,8 @@
       +'<a href="/learning-center.html">Learning Center</a><br>'
       +'<a href="/blog.html">Blog — Grandpa\'s Tale</a><br>'
       +'<a href="/faq.html">FAQ</a><br>'
-      +'<a href="https://ssrn.com/abstract=6405558" target="_blank" rel="noopener">SSRN Working Paper</a><br>'
+      +'<a href="https://ssrn.com/abstract=6405558" target="_blank" rel="noopener">SSRN — Diagnostic Framework (2026)</a><br>'
+      +'<a href="https://ssrn.com/abstract=7076719" target="_blank" rel="noopener">SSRN — Neijing Epistemology (2026)</a><br>'
       +'<a href="https://scholar.google.com/citations?user=wW5jSL4AAAAJ" target="_blank" rel="noopener">Google Scholar</a>'
       +'</div>'
       +'<div class="footer-col">'
@@ -71,7 +72,7 @@
       +'</div>'
       +'<div class="footer-bottom">'
       +'<span>© '+new Date().getFullYear()+' CALee Acupuncture — Hoon Lee, L.Ac., DAOM(c)</span>'
-      +'<span><a href="https://caleeacu.com/privacy.html" style="color:rgba(255,255,255,.3);">Privacy Policy</a> &middot; <a href="https://caleeacu.com" style="color:rgba(255,255,255,.3);">caleeacu.com</a></span>'
+      +'<span><a href="https://caleeacu.com" style="color:rgba(255,255,255,.3);">caleeacu.com</a></span>'
       +'</div>'
       +'</div>'
       +'</footer>';

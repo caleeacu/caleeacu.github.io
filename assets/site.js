@@ -7,6 +7,7 @@
     {label:'About',          href:'/about.html'},
     {label:'Blog',           href:'/blog.html'},
     {label:'Learning Center',href:'/learning-center.html'},
+    {label:'Cases',          href:'/cases/'},
     {label:'FAQ',            href:'/faq.html'},
   ];
 
@@ -57,6 +58,7 @@
       +'<div class="footer-col">'
       +'<h4>Research</h4>'
       +'<a href="/learning-center.html">Learning Center</a><br>'
+      +'<a href="/cases/">Clinical Case Library</a><br>'
       +'<a href="/blog.html">Blog — Grandpa\'s Tale</a><br>'
       +'<a href="/faq.html">FAQ</a><br>'
       +'<a href="https://ssrn.com/abstract=6405558" target="_blank" rel="noopener">SSRN — Diagnostic Framework (2026)</a><br>'

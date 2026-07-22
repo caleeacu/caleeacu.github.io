@@ -38,7 +38,7 @@ jobs:
           git config user.name "content-bot"
           git config user.email "actions@github.com"
           if ! git diff --quiet; then
-            git add faq.html learning-center.html
+            git add -A faq.html learning-center.html index.html about.html blog.html cases/
             git commit -m "content: sync from Google Sheets ($(date -u +%Y-%m-%d))"
             git push
           else

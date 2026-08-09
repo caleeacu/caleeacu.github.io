@@ -61,6 +61,109 @@
   gtag('js', new Date());
   gtag('config', 'G-40LK5S10Z3');
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://research.caleeacu.com/#website",
+      "url": "https://research.caleeacu.com/",
+      "name": "CALee Research",
+      "description": "Korean acupuncture diagnostic framework, evidence map, and clinical education by Hoon Lee, L.Ac., DAOM(c).",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://research.caleeacu.com/#hoonlee"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://research.caleeacu.com/#hoonlee",
+      "name": "Hoon Lee",
+      "honorificSuffix": "L.Ac., DAOM(c)",
+      "jobTitle": "Licensed Acupuncturist · Researcher",
+      "url": "https://research.caleeacu.com/about.html",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "CALee Acupuncture",
+        "url": "https://caleeacu.com"
+      },
+      "sameAs": [
+        "https://scholar.google.com/citations?user=wW5jSL4AAAAJ&hl=en",
+        "https://ssrn.com/abstract=6405558",
+        "https://ssrn.com/abstract=7076719",
+        "https://www.amazon.com/dp/B0GSXDDLGK",
+        "https://www.amazon.com/dp/B0GX374FK9"
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://research.caleeacu.com/#framework",
+      "name": "The CALee Diagnostic Framework",
+      "description": "A three-principle framework for diagnostic reasoning in Korean acupuncture: Constitutional Individuation, Relational Process, and the Non-Fixed Self.",
+      "url": "https://research.caleeacu.com/#framework",
+      "creator": {
+        "@id": "https://research.caleeacu.com/#hoonlee"
+      },
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://research.caleeacu.com/#constitutional-individuation",
+          "name": "Constitutional Individuation",
+          "termCode": "CI",
+          "url": "https://research.caleeacu.com/#constitutional-individuation",
+          "description": "Each patient is assessed against their own constitutional baseline rather than a universal standard. Sasang and Eight Constitution Medicine determine the treatment strategy, not the disease label.",
+          "inDefinedTermSet": {
+            "@id": "https://research.caleeacu.com/#framework"
+          }
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://research.caleeacu.com/#relational-process",
+          "name": "Relational Process",
+          "termCode": "RP",
+          "url": "https://research.caleeacu.com/#relational-process",
+          "description": "Health is a dynamic relationship between the individual and their environment. Pain, sleep, digestion, and stress are expressions of one relational pattern rather than separate complaints.",
+          "inDefinedTermSet": {
+            "@id": "https://research.caleeacu.com/#framework"
+          }
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://research.caleeacu.com/#non-fixed-self",
+          "name": "Non-Fixed Self",
+          "termCode": "NFS",
+          "url": "https://research.caleeacu.com/#non-fixed-self",
+          "description": "Physiological states are not fixed. Diagnosis is an ongoing interpretive process rather than a permanent label, and treatment adapts as the patient's pattern evolves.",
+          "inDefinedTermSet": {
+            "@id": "https://research.caleeacu.com/#framework"
+          }
+        }
+      ],
+      "subjectOf": [
+        {
+          "@type": "ScholarlyArticle",
+          "name": "A Conceptual Framework for Diagnostic Reasoning in Korean Acupuncture: Relational Process, Constitutional Individuation, and the Non-Fixed Self",
+          "url": "https://ssrn.com/abstract=6405558",
+          "datePublished": "2026",
+          "author": {
+            "@id": "https://research.caleeacu.com/#hoonlee"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "name": "The Relational Foundations of East Asian Medical Epistemology: Reading the Huangdi Neijing as a Classical Framework for Process-Based Diagnostic Reasoning",
+          "url": "https://ssrn.com/abstract=7076719",
+          "datePublished": "2026",
+          "author": {
+            "@id": "https://research.caleeacu.com/#hoonlee"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <script src="/assets/site.js"></script>
@@ -113,29 +216,29 @@
 </section>
 
 <!-- FRAMEWORK -->
-<section class="section" style="background:var(--surface);">
+<section class="section" id="framework" style="background:var(--surface);">
   <div class="container">
     <p class="section-eyebrow">The CALee Diagnostic Framework</p>
     <h2 class="section-title">Three Principles</h2>
     <div class="framework-grid">
-      <div class="fw-card">
+      <div class="fw-card" id="constitutional-individuation">
         <div class="abbr">CI · Constitutional Individuation</div>
         <h4>Constitutional Individuation</h4>
         <p>Each patient is assessed against their own constitutional baseline — not a universal standard. Sasang and Eight Constitution Medicine determine the treatment strategy, not the disease label.</p>
       </div>
-      <div class="fw-card">
+      <div class="fw-card" id="relational-process">
         <div class="abbr">RP · Relational Process</div>
         <h4>Relational Process</h4>
         <p>Health is a dynamic relationship between the individual and their environment. Pain, sleep, digestion, and stress are expressions of one relational pattern — not separate complaints requiring separate specialists.</p>
       </div>
-      <div class="fw-card">
+      <div class="fw-card" id="non-fixed-self">
         <div class="abbr">NFS · Non-Fixed Self</div>
         <h4>Non-Fixed Self</h4>
         <p>Physiological states are not fixed. Diagnosis is an ongoing interpretive process, not a permanent label. Treatment adapts as the patient's pattern evolves over the course of care.</p>
       </div>
     </div>
     <p style="margin-top:16px;font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);">
-      Full framework definition: <a href="https://ssrn.com/abstract=6405558" target="_blank" rel="noopener">ssrn.com/abstract=6405558</a>
+      Original paper: <a href="https://ssrn.com/abstract=6405558" target="_blank" rel="noopener">ssrn.com/abstract=6405558</a>
       · Evidence classification: <a href="/learning-center.html">Learning Center → Research Map</a>
     </p>
   </div>

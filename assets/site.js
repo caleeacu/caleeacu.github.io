@@ -63,6 +63,7 @@
       +'<a href="/faq.html">FAQ</a><br>'
       +'<a href="https://ssrn.com/abstract=6405558" target="_blank" rel="noopener">SSRN — Diagnostic Framework (2026)</a><br>'
       +'<a href="https://ssrn.com/abstract=7076719" target="_blank" rel="noopener">SSRN — Neijing Epistemology (2026)</a><br>'
+      +'<a href="https://ssrn.com/abstract=7469518" target="_blank" rel="noopener">SSRN — Containment &amp; the Leak Model (2026)</a><br>'
       +'<a href="https://scholar.google.com/citations?user=wW5jSL4AAAAJ" target="_blank" rel="noopener">Google Scholar</a>'
       +'</div>'
       +'<div class="footer-col">'
